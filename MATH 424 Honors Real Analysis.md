@@ -397,10 +397,15 @@ $d_{\infty}(x,y) = \max_{1\leq i \leq n}|x_i-y_i|$
 
 **Lemma 3.4.7** $(\mathbb{R}^n,d_1)$ is complete.
 Proof:
-	Let $x^{(k)} = \{(x^{(k)}_1,x^{(k)}_2,\cdots x^{(k)}_n,)\}_{k=1}^{\infty}$ be a Cauchy sequence in $\mathbb{R}^n$ with respect to $d_1$. Note that $\forall j$ we have $|x_j-y_j|\leq \sum_{i=1}^n|x_i-y_i| = d_1(x,y)$ for all $x,y\in\mathbb{R}^n$. Hence $\forall j$, $\exists N$ s.t. $k,l > N \implies \varepsilon > d_1(x^{(k)}, x^{(l)}) \geq |x_j^{(k)}-x_j^{(l)}|$, so $\{x_1^{(k)}\}, \cdots, \{x_n^{(k)}\}$ are a convergent sequences in $\mathbb{R}$. Since $\mathbb{R}$ is complete, $\forall j, \exists L_j$ s.t. $x_j^{(k)}\rightarrow L_j$. Hence $\exists N_j$ s.t. $k > N_j \implies |x^{(k)}_j \rightarrow L_j| < \varepsilon / n$. Then $\forall N > \max\{N_1,\cdots, N_n\}$
+	Let $x^{(k)} = \{(x^{(k)}_1,x^{(k)}_2,\cdots x^{(k)}_n)\}_{k=1}^{\infty}$ be a Cauchy sequence in $\mathbb{R}^n$ with respect to $d_1$. Note that $\forall j$ we have $|x_j-y_j|\leq \sum_{i=1}^n|x_i-y_i| = d_1(x,y)$ for all $x,y\in\mathbb{R}^n$. Hence $\forall j$, $\exists N$ s.t. $k,l > N \implies \varepsilon > d_1(x^{(k)}, x^{(l)}) \geq |x_j^{(k)}-x_j^{(l)}|$, so $\{x_1^{(k)}\}, \cdots, \{x_n^{(k)}\}$ are a convergent sequences in $\mathbb{R}$. Since $\mathbb{R}$ is complete, $\forall j, \exists L_j$ s.t. $x_j^{(k)}\rightarrow L_j$. Hence $\exists N_j$ s.t. $k > N_j \implies |x^{(k)}_j \rightarrow L_j| < \varepsilon / n$. Then $\forall N > \max\{N_1,\cdots, N_n\}$
 		$$d((L_1,L_2,\cdots,L_n), x^{(k)}) = \sum_{j=1}^n|L_j - x_j^{(k)}| < \frac{\varepsilon}{n} + \frac{\varepsilon}{n}+\cdots \frac{\varepsilon}{n} =\varepsilon$$
 		Hence $x^{(k)}\rightarrow L = (L_1,\cdots,L_n) \in \mathbb{R}^n$ with respect to $d_1$ and thus complete.
 
+>[!note] Theorem (Bolzano–Weierstrass in $\mathbb{R}^n$)
+>Let $\{s_n\}$ be a bounded sequence in $\mathbb{R}^n$, then $\{s_n\}$ has a convergent subsequence.
+
+Proof:
+	Let $\{x^{m}\}$ be a bounded sequence in $\mathbb{R}^n$. The sequence $\{x^{m}_1\}$ of first components of the terms of $\{x^m\}$ is a bounded real sequence, which has a convergent subsequence $\{x^{mk} _1\}$. Let $\{x^{mk}\}$ be the corresponding subsequence of $\{x^m\}$. Then the sequence $\{x^{mk}_2 \}$ of second components of $\{x^{mk}\}$ is a bounded sequence of real numbers, so it too has a convergent subsequence, and we again have a corresponding subsequence of $\{x^{mk}\}$(and therefore of $\{x^m\}$), in which the sequences of first and second components both converge. Continuing for $n$ iterations, we end up with a subsequence $\{z^m\}$ of $\{x^m\}$ in which the sequences of first, second, ..., $n$th components all converge, and therefore the subsequence $\{z^m\}$ itself converges in $\mathbb{R}^n$.
 
 
 >[!note] Def (Norm)
@@ -410,8 +415,6 @@ Proof:
 >3) $\lVert x + y \rVert \leq \lVert x \rVert + \lVert y \rVert$
 
 **Lemma 3.4.8** Let $\lVert \cdot \rVert: \mathbb{R}^n\rightarrow \mathbb{R}$ be a norm. Then $d: \mathbb{R}^n\times \mathbb{R}^n \rightarrow [0,\infty)$, $d(x,y) = \lVert x - y \lVert$ is a metric.
-Proof:
-	#TODO 
 
 >[!note] Def (Equivalent norm and metric)
 >Two norms $\lVert \cdot \rVert, \lVert \cdot \rVert'$ are equivalent on $\mathbb{R}^n$ if $\exists c_1,c_2 > 0$ s.t. $\forall x\in\mathbb{R}^n$
@@ -429,7 +432,7 @@ Remark. Suppose $\lVert \cdot \rVert, \lVert \cdot \rVert'$ are two equivalent n
 1) $\{S_n\}$ a Cauchy sequence with respect to $d \iff \{S_n\}$ is a Cauchy sequence with respect to $d'$.
 2) $\{S_n\} \subseteq E$ converges with respect to $d \iff \{S_n\}$ converges with respect to $d'$.
 Proof:
-	1) Since $d,d'$ are equivalent, $\exists c_1,c_2 > 0$ s.t. $c_1d(x,y) \leq d'(x,y) \leq c_2d(x,y), \forall x,y$. Suppose $\{S_n\}$ is a Cauchy sequence with respect to $d$. Then given $\varepsilon > 0$, $\exists N$ s.t. $n,m \geq M \implies d'(s_n,s_m) < c_1\varepsilon$, and then $n,m \geq N$, $d(s_n,s_m) \leq \frac{1}{c}d'(s_n,s_m) < c_1 d'(s_n,s_m) < c_1< \frac{1}{c_1}c_1\varepsilon = \varepsilon$. ==converse: exercise==
+	1) Since $d,d'$ are equivalent, $\exists c_1,c_2 > 0$ s.t. $c_1d(x,y) \leq d'(x,y) \leq c_2d(x,y), \forall x,y$. Suppose $\{S_n\}$ is a Cauchy sequence with respect to $d$. Then given $\varepsilon > 0$, $\exists N$ s.t. $n,m \geq M \implies d'(s_n,s_m) < c_1\varepsilon$, and then $n,m \geq N$, $d(s_n,s_m) \leq \frac{1}{c}d'(s_n,s_m) < c_1 d'(s_n,s_m) < c_1< \frac{1}{c_1}c_1\varepsilon = \varepsilon$. The converse is similar.
 	3) #TODO 
 
 **Corollary 3.4.11** $(\mathbb{R}^n,d_2), (\mathbb{R}^n,d_{\infty})$ are complete: Cauchy sequences converge.
@@ -439,16 +442,17 @@ Proof:
 #### *Topology (Surprise!)
 Recall if $(E,d)$ is a metric space, then we have a notion of an open set 
 $O: E$ is open $\iff \forall x \in O, \exists r(x) = r >0$ s.t. $B_{r(x)}(x) \subseteq O$. 
-We prove 3 properties of open sets: 1) $\varnothing, E$ are open. 2) If $O,O'$ are open then so is $O \cap O'$. 3) If $\{O_{\alpha}\}_{\alpha \in A}$ is a collection of open sets, then $\cup_{\alpha \in A}$ is open.
+We prove 3 properties of open sets: 1) $\varnothing, E$ are open. 2) If $O,O'$ are open then so is $O \cap O'$. 3) If $\{O_{\alpha}\}_{\alpha \in A}$ is a collection of open sets, then $\cup_{\alpha \in A} O_{\alpha}$ is open.
 
 >[!note] Def (Topology)
->A topoloogy $\mathcal{T}$ on a set $X$ is a collection of subset of $X$ (so $\mathcal{T} \subseteq \mathbb{P}(X)$,where $\mathbb{P}(X)$ is the power set) elements of $\mathcal{T}$ are called "open sets" s.t.
+>A topoloogy $\mathcal{T}$ on a set $X$ is a collection of subset of $X$ (so $\mathcal{T} \subseteq \mathbb{P}(X)$,where $\mathbb{P}(X)$ is the power set) whose elements are called "open sets" s.t.
 >1) $\varnothing, X \in \mathcal{T}$
 >2) If $O,O'\in \mathcal{T}$, then  $O \cap O' \in \mathcal{T}$. 
->3) $\forall\{O_{\alpha}\}_{\alpha \in A} \subseteq \mathcal{T}$, then $\cup_{\alpha \in A}\in\mathcal{T}$.
+>3) $\forall\{O_{\alpha}\}_{\alpha \in A} \subseteq \mathcal{T}$, then $\cup_{\alpha \in A}O_{\alpha}\in\mathcal{T}$.
 
 Note: $\mathbb{R}^n$ comes with the standard topology and metric $(d_2)$
 Note: the "open set" here does not necessarily have anything to do with metric.
+
 We proved: if $(E,d)$ is a metric space, then there is a topology $\mathcal{T}_d$ with associated to $d$.
 
 >[!note] Def (Topological space)
@@ -457,11 +461,11 @@ We proved: if $(E,d)$ is a metric space, then there is a topology $\mathcal{T}_d
 **Lemma 3.4.12** Let $d, d'$ be two equivalent metric on a set $E$, then $\mathcal{T}_d = \mathcal{T}_{d'}$, i.e., they give rise to the same topology.
 Proof:
 	It's enough to show that $\mathcal{T}_d \subseteq \mathcal{T}_{d'}$, then by the same argument $T_{d'} \subseteq T_d$.
-	Since $d,d'$ are equivalent, $\exists c > 0$ s.t. $cd(x,y)\leq d'(x,y), \forall x,y$. Suppose $O \subseteq \mathcal{T}_d$ an open set, then $\forall x \in O, \exists r(x)$ s.t. $B_{r(x)}^d(x) \subseteq O$. If $y \in B_{rc}^{d'}(x)$ (another ball rose by $d'$ centered at $x$). then $cr > d'(x,y) (def\:of\:y \in B_{rc}^{d'}(x)) \geq cd(x,y) \implies d(x,y) < r \implies y \in B_{r(x)}^d(x)$ 
-	$\implies B_{rc}^{d'}(x) \subseteq B_{r(x)}^d(x) \subseteq O$. Since $x$ is arbitrary, $O \in \mathcal{T}_{d'}$. 
+	Since $d,d'$ are equivalent, $\exists c > 0$ s.t. $cd(x,y)\leq d'(x,y), \forall x,y$. Suppose $O \subseteq \mathcal{T}_d$ an open set, then $\forall x \in O, \exists r(x)$ s.t. $B_{r(x)}^d(x) \subseteq O$. If $y \in B_{cr}^{d'}(x)$ (another ball risen by $d'$ centered at $x$). then $cr > d'(x,y) (def\:of\:y \in B_{rc}^{d'}(x)) \geq cd(x,y) \implies d(x,y) < r \implies y \in B_{r(x)}^d(x)$ 
+	$\implies B_{rc}^{d'}(x) \subseteq B_{r(x)}^d(x) \subseteq O$. Since $x$ is arbitrary, $O \in \mathcal{T}_{d'}$, which gives $\mathcal{T}_d\subseteq \mathcal{T}_{d'}$
 
 >[!note] Def (Convergent sequence in a topological space)
->$(X,\mathcal{T})$ a topological space, $\{S_n\}\subseteq X$ a sequence. Then $S_n \rightarrow L\in X$ if $\forall$ open set $U \subseteq X$ with $L \in U$, $\exists N$ s.t. $n > N \implies S_n\in U$.
+>Let $(X,\mathcal{T})$ be a topological space, $\{S_n\}\subseteq X$ a sequence. Then $S_n \rightarrow L\in X$ if $\forall$ open set $U \subseteq X$ with $L \in U$, $\exists N$ s.t. $n > N \implies S_n\in U$.
 
 Exercise: If $\mathcal{T} = \mathcal{T}_d$ for some metric $d$, then the two notions of convergence agree.
 
@@ -471,7 +475,7 @@ Exercise: If $\mathcal{T} = \mathcal{T}_d$ for some metric $d$, then the two not
 *note: def different from the book*
 
 >[!note] Def (Open cover)
-> Let $(X,\mathcal{T})$ be a topological space, $K \subseteq X$ a subset. An open cover of $K$ is a collection of open sets $\{O_{\alpha}\}_{\alpha \in A} \subseteq \mathbb{P}(X)$ s.t. $K \subseteq \cup_{\alpha \in A}O_{\alpha}$. 
+> Let $(X,\mathcal{T})$ be a topological space, $K \subseteq X$ a subset, then an open cover of $K$ is a collection of open sets $\{O_{\alpha}\}_{\alpha \in A} \subseteq \mathbb{P}(X)$ s.t. $K \subseteq \cup_{\alpha \in A}O_{\alpha}$. 
 >
 
 Ex. $\{(n,n+2)\}_{n \in \mathbb{Z}}$ is an open cover of $\mathbb{R}$
@@ -479,6 +483,8 @@ Ex. $(E,d)$ metric space, $\{B_{1-1/n}(x)\}_{n\in \mathbb{N}}$ is an open cover 
 
 >[!important] Def (Compactness)
 >A subset $K$ of a topological space $(X,\mathcal{T})$ is compact if for every open cover $\{U_{\alpha}\}_{\alpha \in A}$ of $K$, $\exists n,\alpha_1,...\alpha_n \in A$ s.t. $K \subseteq U_{\alpha_1} \cup \cdots \cup U_{\alpha_n}$
+
+*Any open over has a finite open subcover that covers the subset*
 
 Ex. any finite set $\{x_1,...,x_n\}$ is compact. if $\{U_{\alpha}\}_{\alpha \in A}$ is an open cover, then $\forall i$, $\exists \alpha_i$ s.t. $x_i \in U_{\alpha_i}$ and then $\{x_1,...,x_n\} \subseteq U_{\alpha_1} \cup \cdots \cup U_{\alpha_n}$
 Counter(?) example: $\mathbb{R}$ is not compact: $\{(n,n+2)\}_{n \in \mathbb{Z}}$ is an open cover with no finite subcover.
@@ -494,9 +500,9 @@ Proof:
 **Theorem 3.5.2** Let $(E,d)$ be a metric space. If $K \subseteq E$ is compact, then $K$ is closed and bounded.
 Proof:
 	($K$ is bounded) Choose any $x \in E$, then $E = \cup_{n=1}^{\infty}B_n(x)$, so $\{B_n(x)\}_{n=1}^{\infty}$ is an open cover of $K$. So $\exists n_1 < n_2 < \cdots < n_k$ s.t. $K \subseteq B_{n1}(x) \cap \cdots \cap B_{nk}(x) = B_{nk}(x)$
-	($K$ is closed)    If $K = E$, $K$ is closed since $\varnothing = E\setminus K$ is open. Suppose $K \neq E$, then $\forall x \in E\setminus K$, and then $K \subseteq E \setminus \{x\}$. $U_r = E \setminus \overline{B_r}(x)$ is open for all $r$. $\cup{r > 0} = \cup_{r > 0}(E \setminus \overline{B_r}(x)) = E \setminus \cap_{r>0}\overline{B_r}(x) = E \setminus \{x\} \supseteq K$ $\implies \{U_r\}_{r > 0}$ is an open cover of $K$. Since $K$ is compact, $\exists r_1<\cdots<r_k$ s.t. $K \subseteq U_{r1}\cup \cdots \cup U_{rk} = E \setminus (\overline{B_{r1}}(x)\cap \cdots \cap \overline{B_{rk}}(x)) = E \setminus \overline{B_{r1}}(x)$ (closed) $\implies B_{r1}(k)\cap K = \varnothing \implies E\setminus K$ is open.
+	($K$ is closed)    If $K = E$, we are done, $K$ is closed since $\varnothing = E\setminus K$ is open. If $K \neq E$, and let $x \in E \setminus K$, then $K \subseteq E \setminus \{x\}$. $U_r = E \setminus \overline{B_r}(x)$ is open for all $r$. Now consider the union. $\cup_{r > 0}(E \setminus \overline{B_r}(x)) = E \setminus \cap_{r>0}\overline{B_r}(x) = E \setminus \{x\} \supseteq K$ $\implies \{U_r\}_{r > 0}$ is an open cover of $K$. Since $K$ is compact, $\exists r_1<\cdots<r_k$ s.t. $K \subseteq U_{r1}\cup \cdots \cup U_{rk} = E \setminus (\overline{B_{r1}}(x)\cap \cdots \cap \overline{B_{rk}}(x)) = E \setminus \overline{B_{r1}}(x)$ (since it is closed) $\implies B_{r1}(k)\cap K = \varnothing \implies E\setminus K$ is open.
 *The converse is false by simply taking any metric that is bounded: d = min(|x-y|,1), R: closed and bounded, but not compact*
-Remark. In $(\mathbb{R}^n,d_2)$ compact $\iff$ closed and bounded
+Remark. In $(\mathbb{R}^n,d_2)$ a metric space is compact $\iff$ it is closed and bounded
 
 Remark. In general, compact sets need not be closed.
 Ex. $X =\{a,b\}, \mathcal{T} = (X,\varnothing, \{a\})$. $K = \{a\}$ is not closed since $X \setminus K = \{b\}\notin \mathcal{T}$
@@ -642,10 +648,45 @@ Ex. $f: (0,1) \rightarrow \mathbb{R}, f(x) = \sin(1/x)$. Claim: $f$ is not unifo
 Proof:
 	Given $\varepsilon$ we want $\delta = \delta_{\varepsilon}$ s.t. $d(x,y) < \delta \implies d(f(x),f(y)) < \varepsilon$. Since $f$ is continuous, $\forall x$, $\exists \delta_x$ s.t. $d(x,y) < \delta_x \implies d'(f(x),f(y)) < \varepsilon/2$. $\{B_{\delta_{x/2}}(x)\}_{x \in E}$ is an open cover of $E$ $\implies \exists n,x_1,\cdots, x_n$ s.t. $E = B_{\delta_{x1}/2} \cup \cdots \cup B_{\delta_{x_n}/2}(x_n)$. Let $\delta = \min(\delta x_1/2,\cdots \delta x_n/2)$. Suppose $d(p,q) < \delta$. Then $q \in B_{\delta x)i /2}(x)$ for some $i$. Then $d(p,x_i) \leq d(p,q) + d(q,x_i) < \delta + \delta_ {x_1}/2 \leq \delta_{x_i}$. $p \in B_{\delta_{x_i}}(x_i)$. Since $p,q \in B_{delta_{x_i}}(x_i)$, $d'(f(p),f(q)) \leq d'(f(p), f(x_i)) + d'(f(x_i),f(p)) < \varepsilon /2 + \varepsilon /2 = \varepsilon$. 
 
+>[!note] Def (Pointwise continuity)
+>$\{f_n:(E,d)\rightarrow (E',d')\}_{n=1}^{\infty}$ sequence of functions between two metric spaces. The sequence $\{f_n\}$ converges pointwise to $f: E\rightarrow E'$ if $\forall p \in E$, $f_n(p) \rightarrow f(p)$
+
+Pointwise limit of continuous functions need not be continuous.
+
+>[!note] Def (Uniform convergence)
+>$\{f_n:(E,d)\rightarrow (E',d')\}_{n=1}^{\infty}$a  sequence of functions between two metric spaces, $A \subseteq E$ a subspace. $f_n \rightarrow f$ uniformly on $A$ if $\forall \varepsilon > 0$, $\exists N$ s.t. $n\geq N \implies d'(f_n(p), f(p)) < \varepsilon, \forall p \in A$. 
+>Equivalently, $\forall \varepsilon > 0$, $\exists N$ s.t. $n \geq N \implies \sup\{d'(f_n(p),f(p))|p\in A\} < \varepsilon$. $\lim_{n\rightarrow \infty} \sup \{d'(f_n(p),f(p))|p\in A\} = 0$
+
+Ex. $f_n(x) = x^n, f_n : [0,1]\rightarrow [0,1]$ on $A = [0,a]$. $a < 1$, $f_n$ converges uniformly. Check $\sup\{|x^n-0|: 0 \leq x \leq a\} = a^n \rightarrow 0$. $\{f_n\}$ converges to 0 on $[0,1)$ but not uniformly, $\sup\{|x^n-0|: 0 \leq x \leq 1\} = 1 \not\rightarrow 0$
+Ex. $f_n(x) = \frac{nx}{1 + n^2x^2}, f_n: \mathbb{R}\rightarrow\mathbb{R}$. Since $f_n(0) = 0, \forall n$, and for $x \neq 0, |\frac{nx}{1+n^2x^2}| \leq |\frac{nx}{n^2x^2}| = \frac{1}{n|x|}_{n\rightarrow \infty}\rightarrow0$. Note that $f_n(\frac{1}{n}) = \frac{n/n}{1+n^2/n^2}=\frac{1}{2}\not\rightarrow 0$, so $\{f_n\}$ is not uniformly convergent.
+
+>[!note] Def (Uniformly Cauchy)
+>A sequence of functions $\{f_n: E \rightarrow E'\}_{n \in \mathbb{N}}$ is uniformly Cauchy on $A \subseteq E$ if $\forall \varepsilon > 0, \exists N$ with $n,m \geq N \implies \sup\{ d'(f_n(x),f_m(x))|x\in A\} < \varepsilon$
+
+**Theorem** Let $\{f_n: E \rightarrow E'\}_{n\in\mathbb{N}}, E'$ complete, then $\{f_n\}$ converges uniformly on $A$ $\iff \{f_n\}$ is uniformly Cauchy.
+Proof:
+	($\implies$) Suppose $f_n \rightarrow f$ uniformly on $A$. Then $\forall \varepsilon > 0, \exists N$ s.t. for $n\geq N$, $\sup\{d'(f_n(x),f(x))|x\in A\} < \varepsilon/3$. Then $\forall n,m \geq N$, $\forall x \in A$, $d'(f_n(x),f_m(x))\leq d'(f_n(x), f(x)) + d'(f_m(x),f(x)) < \varepsilon/3 + \varepsilon/3$, which suggests that $\sup\{d'(f_n(x),f_m(x))|x\in A\} \leq \frac{2}{3}\varepsilon < \varepsilon$.
+	($\impliedby$) Suppose $\{f_n\}$ is uniformly Cauchy on $A$. Then $\forall x \in A, \{f_n(x)\}$ is Cauchy. Since $E'$ is complete, we can define $f: A \rightarrow E'$ by $f(x) = \lim_{n\rightarrow\infty}f_n(x)$. We now argue: $f_n \rightarrow f$ is uniformly on $A$.  Recall that $\forall x \in E', h: E' \rightarrow [0,\infty), h(p) = d'(x,p)$ is continuous. Since $\{f_n\}$ is uniformly Cauchy on $A$, given $\varepsilon > 0, \exists N$ s.t. if $m,n \geq N$, then $\sup\{ d'(f_n(x),f_m(x))|x\in A\} < \varepsilon/2$. Fix $n \geq N$, then $d'(f_n(x), f(x)) = d'(f_n(x), \lim_{m \rightarrow \infty}f_m(x)) = \lim_{m \rightarrow \infty}d'(f_n(x),f_m(x)) \leq$$\sup_{m \geq n} d'(f_m(x), f_n(x))$$< \varepsilon$. Hence $\forall n \geq N, \sup\{d'(f_n(x), f(x))| x\ \in A\} \leq \varepsilon/2 < \varepsilon$.
+
+**Theorem** Uniform limit of continuous functions is continuous.
+Proof:
+	Suppose $\{f_n: E \rightarrow E'\}$ converges uniformly on all of $E$. Fix $p \in E$, we prove that $f$ is continuous on $p$. For $\forall x \in E, \forall n \in \mathbb{N}$, $d'(f(p), f(x))\leq d'(f(p), f_n(p)) + d'(f_n(p),f_n(x)) + d'(f_n(x), f(x))$.  Given $\varepsilon > 0$, we want to show: $\exists \delta > 0$ s.t. if $d(x,p) < \delta$, then $d'(f(x),f(p)) < \varepsilon$. Since $f_n \rightarrow f$ converges uniformly, $\exists N$ s.t. for $n \geq N$, $d'(f_n(y), f(y)) < \varepsilon /3, \forall y \in E$. Since $f_N$ is continuous at $p$, $\exists \delta > 0$ s.t. if $d(x,p) < 0, d'(f_N(x),f_N(p)) < \varepsilon/3$. Then $\forall x$ with $d(x,p) < \delta$,
+	$d'(f(p), f(x))\leq d'(f(p), f_n(p)) + d'(f_n(p),f_n(x)) + d'(f_n(x), f(x)) < \varepsilon/3+\varepsilon/3+\varepsilon/3 = \varepsilon$
+
+>[!note] Def (Bounded function)
+>Let $(E,d), (E',d')$ be two metric spaces, a function $f: E \rightarrow E'$ is bounded if $f(E) \subseteq E'$ is bounded.
+>Notation: $C(E,E') = \{f: E\rightarrow E'| f\:bounded\:and\:continuous\}$
+
+Exercise. if $f,g: E\rightarrow E'$ are bounded, then $\{d'(f(x),g(x))| x\in E\}$ is bounded. Define $D: C(E,E')\times C(E,E')\rightarrow [0,\infty)$ by $D(f,g) = \sup\{d'(f(x),g(x))| x \in E\}$
+Exercise. $D$ is a metric. Then $f_n \rightarrow f$ in $(C(E,E'),D) \iff f_n \rightarrow f$ uniformly.
+
+
+
+
 # Chapter 5 Differentiation
 
 
-# Chapter 6 Reimann Integrals
+# Chapter 6 Riemann Integrals
 
 
 # Chapter 7 Interchange of limit operations
