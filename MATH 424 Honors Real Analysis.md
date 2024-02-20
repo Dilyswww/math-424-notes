@@ -597,7 +597,7 @@ Proof:
 Proof:
 	$f(K)$ is closed and bounded in $\mathbb{R}$, hence $\exists x_1,x_2 \in\mathbb{R}$ s.t. $f(x_1) = \inf (f(K)), f(x_2) = \sup(f(K))$
 
-
+## 4.2 Continuity and Limits
 >[!note] Def (Cluster point of a topological space)
 >Let $X$ be a topological space, $S \subseteq X$ a subspace, then $x\in X$ is a cluster point of  $S$ if $\forall$ open set $U$ with $x\in U, (U\setminus \{x\})\cap S$ is nonempty. If $E$ is a metric space, $x$ is a cluster point of $S$ iff $\exists$ a sequence $\{S_n\} \subseteq S\setminus\{x\}$ s.t. $s_n \rightarrow x$.
 
@@ -613,23 +613,22 @@ Remarks.
 (2) Even if $p \in A$ we are requiring $f(p) =\lim_{x\rightarrow p}f(x)$
 Ex. $f:\mathbb{R}\rightarrow \mathbb{R}, f(x) = 1, x=0,f(x) = 0, o.w.$ Then $\lim_{x \in \rightarrow 0} f(x)= 0 \neq 1 = f(0)$.
 
-**Lemma** $E,E'$ metric spaces, $p$ cluster point of $E$. Then $f: E \rightarrow E'$ is continuous at $p \iff$ $\lim_{x \rightarrow p} f(x) = f(p)$.
+**Lemma 4.2.1** $E,E'$ metric spaces, $p$ cluster point of $E$. Then $f: E \rightarrow E'$ is continuous at $p \iff$ $\lim_{x \rightarrow p} f(x) = f(p)$.
 Proof:
 	#TODO 
 
-**Theorem** $E,E'$ metric spaces, $f: E \rightarrow E'$ is continuous at $p \in E$ $\iff \forall$ sequences $\{S_n\} \in E$ with $S_n \rightarrow p$, we have $f(s_n) \rightarrow f(p)$.
+**Theorem 4.2.2** $E,E'$ metric spaces, $f: E \rightarrow E'$ is continuous at $p \in E$ $\iff \forall$ sequences $\{S_n\} \in E$ with $S_n \rightarrow p$, we have $f(s_n) \rightarrow f(p)$.
 Proof:
 	($\implies$) Suppose $S_n \rightarrow p$ and $f$ is continuous. Then given $\varepsilon > 0$, $\exists \delta > 0$ s.t. $d(x,p) < \delta \implies d'(f(x),f(p)) < \varepsilon$. Since $S_n \rightarrow p$, $\exists N$ s.t. if $n \geq N$, $d(x,p) < \delta \implies d'(f(x),f(p)) < \varepsilon \implies f(p) \rightarrow f(x)$
 	($\impliedby$) Suppose $f$ is not continuous at $p$. We construct $\{S_n\}$ s.t. $S_n \rightarrow p$ but $f(S_n) \not\rightarrow f(p)$. Since $F$ is not continuous at $p$, $\exists \varepsilon_0 > 0$ s.t. $\forall \delta > 0$, $\exists x_r \in B_{\delta}(p)$ with $f(x_{\delta})\notin B_{\varepsilon_0}(f(p))$. Let $S_n = x_{1/n}$. Then $s_n \in B_{1/n}(p)$ (hence $s_n \rightarrow p$) and $f(s_n)\notin B_{\varepsilon_0}(f(p))$  (hence $f(s_n) \not\rightarrow f(p)$)
 
-**Theorem** Suppose $f,g: (E,d) \rightarrow \mathbb{R}$ are continuous at $p \in E$. Then $f + g, f\cdot g$ are continuous at $p$. If $g(p) \neq 0$, $f/g$ is also continuous.
+**Theorem 4.2.3** Suppose $f,g: (E,d) \rightarrow \mathbb{R}$ are continuous at $p \in E$. Then $f + g, f\cdot g$ are continuous at $p$. If $g(p) \neq 0$, $f/g$ is also continuous.
 Proof:
 	Suppose $S_n \rightarrow p$, then $f(s_n) \rightarrow f(p), g(s_n)\rightarrow g(p)$. Hence $(f+g)(s_n) = f(s_n) + g(s_n)$ $\rightarrow f(p) + g(p) \implies f+g$ is continuous. Other proofs are similar.
 
-**Theorem** Suppose $f = (f_1,\cdots,f_n): E \rightarrow \mathbb{R}^n$ is a function, $p \in E$. Then $f$ is continuous at $p \iff f_1\cdots f_n$ are all continuous at $p$.
+**Theorem 4.2.4** Suppose $f = (f_1,\cdots,f_n): E \rightarrow \mathbb{R}^n$ is a function, $p \in E$. Then $f$ is continuous at $p \iff f_1\cdots f_n$ are all continuous at $p$.
 Proof:
 	A sequence $t_k = (t_k^{(1)}, \cdots, t_n^{(n)}) \rightarrow \mathbb{R}^n$ converges to $q = (q_1,\cdots, q_n) \in \mathbb{R}^n \iff$ $t_k^{(k)} \rightarrow q^{(i)}, i = 1,2, \cdots n.$ 
-
 
 #### Uniform continuity
 >[!note] Def (Uniformly continuous)
@@ -639,13 +638,13 @@ Proof:
 Ex. $f(x) = x^2$. $f: [0,\infty) \rightarrow \mathbb{R}$ is not uniformly continuous. 
 Proof: $|f(x) - f(y)| = x^2-y^2= |x-y| |x+y| \geq 2\cdot \min(x,y)\cdot |x-y|$. There for $\forall \delta$ if $x,y > \frac{1}{\delta}$ and $|x-y| = \delta / 2$. We have $|f(x) - f(y)| \geq 2 \cdot \frac{1}{\delta}\cdot \frac{\delta}{2} = 1$. 
 
-**Lemma** Suppose $f: E \rightarrow E'$ is uniformly continuous, then for any Cauchy sequences $\{S_n\}$ in $E$, $f(s_n)$ is Cauchy.
+**Lemma 4.2.5** Suppose $f: E \rightarrow E'$ is uniformly continuous, then for any Cauchy sequences $\{S_n\}$ in $E$, $f(s_n)$ is Cauchy.
 Proof:
 	Since $f$ is uniformly continuous, $\forall \varepsilon > 0$, $\exists \delta$ s.t. $d(x,y) < \delta \implies d'(f(x),f(p)) < \varepsilon$. Fix $\varepsilon > 0$ and choose $\delta$. Since $\{S_n\}$ is Cauchy, $\exists N$ s.t. $n,m \geq N \implies d(s_n,s_m) < \delta$. And then $d'(f(s_n),f(s_m)) < \varepsilon$.
 	
 Ex. $f: (0,1) \rightarrow \mathbb{R}, f(x) = \sin(1/x)$. Claim: $f$ is not uniformly continuous. Reason: $S_n = \frac{1}{\pi /2 + n\pi} \rightarrow 0$,not in $(0,1)$ but still Cauchy. $f(s_n) = \sin(\frac{\pi}{2} + n\pi ) = (-1)^n$. So $f$ is not uniformly continuous.
 
-**Theorem** Suppose $f: E \rightarrow E'$ is continuous and $E$ is compact, then $f$ is uniformly continuous. 
+**Theorem 4.2.6** Suppose $f: E \rightarrow E'$ is continuous and $E$ is compact, then $f$ is uniformly continuous. 
 Proof:
 	Given $\varepsilon$ we want $\delta = \delta_{\varepsilon}$ s.t. $d(x,y) < \delta \implies d(f(x),f(y)) < \varepsilon$. Since $f$ is continuous, $\forall x$, $\exists \delta_x$ s.t. $d(x,y) < \delta_x \implies d'(f(x),f(y)) < \varepsilon/2$. $\{B_{\delta_{x/2}}(x)\}_{x \in E}$ is an open cover of $E$ $\implies \exists n,x_1,\cdots, x_n$ s.t. $E = B_{\delta_{x1}/2} \cup \cdots \cup B_{\delta_{x_n}/2}(x_n)$. Let $\delta = \min(\delta x_1/2,\cdots \delta x_n/2)$. Suppose $d(p,q) < \delta$. Then $q \in B_{\delta x)i /2}(x)$ for some $i$. Then $d(p,x_i) \leq d(p,q) + d(q,x_i) < \delta + \delta_ {x_1}/2 \leq \delta_{x_i}$. $p \in B_{\delta_{x_i}}(x_i)$. Since $p,q \in B_{delta_{x_i}}(x_i)$, $d'(f(p),f(q)) \leq d'(f(p), f(x_i)) + d'(f(x_i),f(p)) < \varepsilon /2 + \varepsilon /2 = \varepsilon$. 
 

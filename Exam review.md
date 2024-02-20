@@ -158,7 +158,7 @@ Let $E$ be a set, $d,d'$ two equivalent metric, then $S_n \rightarrow L\in E$ wi
 Def (Open cover)
 Let $(X,\mathcal{T})$ be a topological space, $K \subseteq X$ a subset, then an open cover of $K$ is a collection of open sets $\{O_{\alpha}\}_{\alpha \in A} \subseteq \mathbb{P}(X)$ s.t. $K \subseteq \cup_{\alpha \in A}O_{\alpha}$. 
 
- Def (Compactness)
+Def (Compactness)
 A subset $K$ of a topological space $(X,\mathcal{T})$ is compact if for every open cover $\{U_{\alpha}\}_{\alpha \in A}$ of $K$, $\exists n,\alpha_1,...\alpha_n \in A$ s.t. $K \subseteq U_{\alpha_1} \cup \cdots \cup U_{\alpha_n}$
 
 Any finite set $\{x_1,...,x_n\}$ is compact
@@ -168,6 +168,109 @@ Let $(X,\mathcal{T})$ be a topological space, $K \subseteq X$ compact, $C \subse
 
 Theorem 
 Let $(E,d)$ be a metric space. If $K \subseteq E$ is compact, then $K$ is closed and bounded.
+
 Remark. In $(\mathbb{R}^n,d_2)$ a metric space is compact $\iff$ it is closed and bounded
+Remark. In general, compact sets need not be closed.
+
+Theorem
+Let $X$ be a topological space, $K_1 \supseteq K_2 \supseteq \cdots \supseteq K_n \supseteq \cdots$ a sequence of compact sets, then $K = \cap_{n=1}^{\infty}K_n \neq \varnothing$ (and compact: since the intersection sets in $K_1$)
+
+Theorem
+Let $X$ be a topological space, $K_1 \supseteq K_2 \supseteq \cdots \supseteq K_n\supseteq\cdots$ sequences of nonempty nested closed compact sets. Then $\cap_{i=1}^{\infty}K_i \neq \varnothing$.
+
+Def (Sequentially compact)
+A subset $K$ of a topological space is sequentially compact if every sequence in $K$ has a convergent subsequence whose limit is in $K$.
+
+Def (Totally bounded)
+A subset $K$ of a metric space $(E,d)$ is totally bounded if $\forall s > 0$, $\exists x_1,\cdots, x_n \in K$ s.t. $K \subseteq B_{\varepsilon}(x_1)\cap \cdots \cap B_{\varepsilon}(x_n)$. i.e., $\forall \varepsilon > 0$, $K$ can be covered by finitely many balls of radius $\varepsilon$.
+
+For a subset $K$ of a metric space, TFAE: 1) $K$ is compact 2) $K$ is sequentially compact 3) $K$ is compete and totally bounded.
+
+Fact
+Suppose $K\subseteq \mathbb{R}^n$ is closed and bounded. Then $K$ is sequentially compact
+
+Lemma
+Suppose $(E,d)$ is a metric space and $K \subseteq E$ is compact, then $K$ is sequentially compact.
+
+Lemma
+Suppose $(E,d)$ is a metric space, $K \subseteq E$ sequentially compact. Then $(K,d)$ is complete and totally bounded.
+
+Lemma
+Let $(E,d)$ be a metric space, $K \subseteq E$ complete and totally bounded, then $K$ is compact. 
+
+Theorem (Heine-Borel)
+A subset $K$ of $\mathbb{R}^n$ is compact $\iff K$ is closed and bounded.
 
 ## Continuous functions
+
+Def (Continuous at a point)
+Let $(E,d)$, $(E',d')$ be two metric space. A function $f: E \rightarrow E'$ is continuous at $p \in E$ if $\forall \varepsilon > 0$, $\exists \delta > 0$ so that $\forall x \in E$, $d(x,p) < \delta \implies d'(f(x),f(p)) < \varepsilon$. i.e. $f(B_{\delta}^d(p)) \subseteq B_{\varepsilon}^{d'}(f(p))$
+
+Theorem
+$f: (E,d) \rightarrow (E',d')$ is continuous $\iff \forall U \subseteq E', U$ open, $f^{-1}(U)$ is open.
+
+Corollary
+$f: (E,d) \rightarrow (E',d')$ is continuous iff $\forall$ closed sets $C \subseteq E'$, $f^{-1}(C)$ is closed.
+
+ Def (Continuous function )
+A map/function $f: (X, \mathcal{T})\rightarrow (X', \mathcal{T}')$ between two topological spaces is continuous if $\forall U \in \mathcal{T}'$, $f^{-1}(U) \in \mathcal{T}$. i.e., preimages of open sets are open.
+
+Remark
+The composite of two continuous maps is continuous. If $f: (X, \mathcal{T}_X) \rightarrow (Y, \mathcal{T}_Y),$$g: (Y, \mathcal{T}_Y) \rightarrow (Z, \mathcal{T}_Z)$ are continuous, then $g\circ f : (X, \mathcal{T}_X)\rightarrow (Z, \mathcal{T}_Z)$ is continuous.
+
+Theorem
+Images of compact sets under continuous functions are compact.  If $f: X \rightarrow Y$ is continuous and $K \subseteq X$ is compact, then $f(X) \subseteq Y$ is compact.
+
+Corollary
+Let $(E,d)$ be a metric space, $X$ a topological space, $K\subseteq X$ compact and $f: X \rightarrow E$ is continuous, then $f(k)$ is complete, totally bounded, sequentially compact and closed. 
+
+Corollary
+Suppose $X$ is a topological space, $f: X \rightarrow \mathbb{R}$ continuous and $K \subseteq X$ compact, then $\exists x_1,x_2\in X$ s.t. $\forall x\in X$, $f(x_1)\leq f(x) \leq f(x_2)$. i.e., $f$ achieves maximum and minimum on $X$. 
+
+Def (Cluster point of a topological space)
+Let $X$ be a topological space, $S \subseteq X$ a subspace, then $x\in X$ is a cluster point of  $S$ if $\forall$ open set $U$ with $x\in U, (U\setminus \{x\})\cap S$ is nonempty. If $E$ is a metric space, $x$ is a cluster point of $S$ iff $\exists$ a sequence $\{S_n\} \subseteq S\setminus\{x\}$ s.t. $s_n \rightarrow x$.
+
+Def (Cluster point of a metric space)
+Suppose $(E,d)$, $(E',d')$ are metric spaces, $A \subseteq E$, $f: A \rightarrow E'$, $p$ is a cluster point of $A$. Then 
+$\lim_{x \rightarrow p}f(x) = q$, if $\forall \varepsilon > 0$, $\exists \delta > 0$ s.t. $x \in A\cap B_{\delta}(p), x \neq p, d'(f(x),q) < \varepsilon$.
+
+Lemma
+$E,E'$ metric spaces, $p$ cluster point of $E$. Then $f: E \rightarrow E'$ is continuous at $p \iff$ $\lim_{x \rightarrow p} f(x) = f(p)$.
+
+Theorem
+Suppose $f,g: (E,d) \rightarrow \mathbb{R}$ are continuous at $p \in E$. Then $f + g, f\cdot g$ are continuous at $p$. If $g(p) \neq 0$, $f/g$ is also continuous.
+
+Theorem
+Suppose $f = (f_1,\cdots,f_n): E \rightarrow \mathbb{R}^n$ is a function, $p \in E$. Then $f$ is continuous at $p \iff f_1\cdots f_n$ are all continuous at $p$.
+
+Def (Uniformly continuous)
+$f: (E,d) \rightarrow (E',d')$ is uniformly continuous if $\forall \varepsilon > 0$, $\exists \delta = \delta_{\varepsilon} > 0$ s.t. 
+$$d(x,p) < \delta \implies d'(f(x),f(p))< \varepsilon, \forall x,p$$
+
+Lemma
+Suppose $f: E \rightarrow E'$ is uniformly continuous, then for any Cauchy sequences $\{S_n\}$ in $E$, $f(s_n)$ is Cauchy.
+
+Theorem
+Suppose $f: E \rightarrow E'$ is continuous and $E$ is compact, then $f$ is uniformly continuous. 
+
+Def (Pointwise continuity)
+$\{f_n:(E,d)\rightarrow (E',d')\}_{n=1}^{\infty}$ sequence of functions between two metric spaces. The sequence $\{f_n\}$ converges pointwise to $f: E\rightarrow E'$ if $\forall p \in E$, $f_n(p) \rightarrow f(p)$
+
+Def (Uniform convergence)
+$\{f_n:(E,d)\rightarrow (E',d')\}_{n=1}^{\infty}$a  sequence of functions between two metric spaces, $A \subseteq E$ a subspace. $f_n \rightarrow f$ uniformly on $A$ if $\forall \varepsilon > 0$, $\exists N$ s.t. $n\geq N \implies d'(f_n(p), f(p)) < \varepsilon, \forall p \in A$. 
+Equivalently, $\forall \varepsilon > 0$, $\exists N$ s.t. $n \geq N \implies \sup\{d'(f_n(p),f(p))|p\in A\} < \varepsilon$. $\lim_{n\rightarrow \infty} \sup \{d'(f_n(p),f(p))|p\in A\} = 0$
+
+Def (Uniformly Cauchy)
+A sequence of functions $\{f_n: E \rightarrow E'\}_{n \in \mathbb{N}}$ is uniformly Cauchy on $A \subseteq E$ if $\forall \varepsilon > 0, \exists N$ with $n,m \geq N \implies \sup\{ d'(f_n(x),f_m(x))|x\in A\} < \varepsilon$
+
+Theorem
+Let $\{f_n: E \rightarrow E'\}_{n\in\mathbb{N}}, E'$ complete, then $\{f_n\}$ converges uniformly on $A$ $\iff \{f_n\}$ is uniformly Cauchy.
+
+Theorem
+Uniform limit of continuous functions is continuous.
+
+Def (Bounded function)
+Let $(E,d), (E',d')$ be two metric spaces, a function $f: E \rightarrow E'$ is bounded if $f(E) \subseteq E'$ is bounded.
+Notation: $C(E,E') = \{f: E\rightarrow E'| f\:bounded\:and\:continuous\}$
+
+
