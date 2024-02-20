@@ -7,6 +7,7 @@ Analysis I and Analysis II, Terence Tao
 
 # Chapter 1 Skipped
 # Chapter 2 The real number system
+
 ## 2.1 Field properties
 >[!important] Def (Field)
 >A set of numbers that satisfies the following properties is a field $F$ equipped with two operations $\cdot : \: F \times F \rightarrow F,(x,y)\mapsto x+y$ and $+:\:F \times F \rightarrow F, (x,y) \mapsto x \cdot y$:
@@ -71,7 +72,7 @@ We can then define the **absolute value**
 >For any $a \in \mathbb{R}$, the absolute value $|a|$ is defined by 
 >$$|a| = \begin{cases} a,\:\:\:\:\:\:\: a \geq 0 \\ -a, \:\:\: o.w. \end{cases}$$
 
->[!note] properties of absolute value
+>[!note] Properties of absolute value
 >We define the function $| \:\cdot\:|: \: \mathbb{R} \rightarrow [0, \infty)$, $a \mapsto |a|$ to be the absolute value of $a$ with the following properties:
 >1) $\forall a, |a| \geq 0$
 >2) $|ab| = |a||b|$
@@ -177,12 +178,12 @@ ex
 4) $E$: a set, $d(x,y) = \begin{cases}1, \:\:x\neq y\\ 0, \:\:x=y\end{cases}$. $B_2(x) = E$, $B_1(x) = \{x\}$
 
 >[!important] Def (Open set)
->A subset $U$ of a metric sapce $(E,d)$ is open if $\forall x \in U, \exists r > 0$ s.t. $B_r(x) \subseteq U$.
+>A subset $U$ of a metric space $(E,d)$ is open if $\forall x \in U, \exists r > 0$ s.t. $B_r(x) \subseteq U$.
 
 Ex. $E = \mathbb{R}$, $U = (a,b)$, $d = \min\{|a-x|,|b-x|\}$
 
 >[!important] Def (Closed set)
->A subset $C$ of a metric sapce $(E,d)$ is closed if the complement of $C$, $C^c = E\setminus C := \{x\in E| x \notin C\}$ is open.
+>A subset $C$ of a metric space $(E,d)$ is closed if the complement of $C$, $C^c = E\setminus C := \{x\in E| x \notin C\}$ is open.
 
 Ex. $E = \mathbb{R}$, $C = [0,1]$.
 Remark: $[0,1) \in \mathbb{R}$ is neither closed nor open. 
@@ -213,7 +214,7 @@ Similarly, $F = [a_1 \times b_1]\times [a_2 \times b_2]\times \cdots \times[a_n 
 Ex. $[a,b)$ is bounded, $x = 0, r = \max\{|a|,|b|\} + 1$, while $[0,\infty)$ is not.
 Ex. $E = \{a\} \neq \varnothing$ s.t. $d(x,y) = \begin{cases}1, x\neq y\\ 0, x = y\end{cases}$. Then for all $U \subseteq E$, for any $x \in E$, we have $U \subseteq B_2(x)$.
 Remark. $\{d(x,s)|s \in S\}$ is bounded above by $r$.
-Remark. Any subset of $E$ is bounded.
+Remark. Any subset of a bounded metric space $E$ is bounded.
 
 >[!note] Theorem 3.2.2 
 >Suppose $\varnothing \neq S \subseteq \mathbb{R}$ is closed and bounded. Then inf $S$, sup $S$ exist and are in $S$
@@ -221,6 +222,7 @@ Remark. Any subset of $E$ is bounded.
 Proof:
 	We show that sup$S$ exists and sup$S \in S$. Since $S$ is bounded, $S$ is bounded from above. Since also $S \neq \varnothing$, $L = \sup S$ exists. If $L \notin S$, then $L \in \mathbb{R}\setminus S$, which is open. But then $\exists r > 0$ s.t. $B_r(L) = (L-r, L+r) \subseteq \mathbb{R}\setminus S$, so we have $(L,\infty) \subseteq \mathbb{R}\setminus S$ and $(L - r,\infty) \subseteq \mathbb{R}\setminus S$. Hence, for all $s \in S$, $s \leq L-r < L - \frac{r}{2}$, which means that $L - \frac{r}{2}$ is also a lower bound, contradicting that $L$ is the supremum.
 	For inf$S$, argue for $-S$.
+
 ## 3.3 Convergent sequences
 
 >[!important] Def (Sequence)
@@ -235,7 +237,7 @@ Proof:
 Ex. $E = \mathbb{R}$, $S_n = \frac{1}{n}$, $S_n \rightarrow 0$. *proof:* Given $\varepsilon > 0$, $\exists N\in \mathbb{N}$ s.t. $\frac{1}{\varepsilon} < N$. Then for all $n > N$, we have $\frac{1}{n} < \frac{1}{N} < \varepsilon$.
 
 **Lemma 3.3.1** A sequence $\{S_n\}$ in $(E,d)$ converges to $L \iff \forall$ open set $U \subseteq E$ with $L \in U$, $\exists N \in \mathbb{N}$ s.t. for all $n > N$, $s_n \in U$.
-Proof:
+Proof: 
 	($\impliedby$) $\forall \varepsilon, B_{\varepsilon}(L)$ is open, so $\exists N \in \mathbb{N}$ s.t. $\forall n > N$, $s_n \in B_{\varepsilon}(L)$, i.e., $d(s_n, L) < \varepsilon$. 
 	($\implies$) Suppose $S_n \rightarrow L$ and $U$ is an open set with $L \in U$. Since $U$ is open, $\exists \:r > 0$ s.t. $B_r(L) \subseteq U$. Since $S_n \rightarrow L$, $\exists N  = N(r)$ s.t. for all $n > N$, $s_n \in B_r(L) \subseteq U$.
 
@@ -249,10 +251,10 @@ Proof:
 	
 **Proposition** Suppose $S_n \rightarrow L$, ${S_{nk}}$ is a subsequence of $S_n$. Then $S_{nk} \rightarrow L$.
 Proof:
-	Let $𝑠_{𝑛_𝑘}$ denote a subsequence of $𝑠𝑛$. Note that 𝑛𝑘≥k for all 𝑘. This easy to prove by induction: in fact, $𝑛_1≥1$ and $𝑛_𝑘≥𝑘$ implies $𝑛_{𝑘+1}>𝑛_𝑘≥𝑘$ and hence $𝑛_{𝑘+1}≥𝑘+1$. Let lim$𝑠_𝑛=L$ and let $𝜖>0$. Then there exists $𝑁$ so that $𝑛>𝑁$ implies $|𝑠_𝑛−L|<𝜖$. Now $𝑘>𝑁⟹𝑛_𝑘>𝑁$$⟹|s_{n_k}−L|<𝜖$. Therefore: $\lim_{𝑘→∞}𝑠_{𝑛_𝑘}$=L.
+	Let $𝑠_{𝑛_𝑘}$ denote a subsequence of $𝑠𝑛$. Note that $𝑛_𝑘≥k$ for all 𝑘. This easy to prove by induction: in fact, $𝑛_1≥1$ and $𝑛_𝑘≥𝑘$ implies $𝑛_{𝑘+1}>𝑛_𝑘≥𝑘$ and hence $𝑛_{𝑘+1}≥𝑘+1$. Let lim$𝑠_𝑛=L$ and let $𝜖>0$. Then there exists $𝑁$ so that $𝑛>𝑁$ implies $|𝑠_𝑛−L|<𝜖$. Now $𝑘>𝑁⟹𝑛_𝑘>𝑁$$⟹|s_{n_k}−L|<𝜖$. Therefore: $\lim_{𝑘→∞}𝑠_{𝑛_𝑘}=L$.
 
 **Lemma 3.3.3** Suppose $C$ is closed in $(E,d)$, $\{S_n\}$ a sequence in $C$ ($\forall n, s_n \in C$) and $s_n \rightarrow L$. Then $L \in C$.
-			Conversely, if $\forall$ convergent $\{s_n\}$ in $C$, lim$S_n \in C$, then $C$ is closed.
+			Conversely, if $\forall$ convergent $\{s_n\}$ in $C$, lim$s_n \in C$, then $C$ is closed.
 Proof:
 	($\implies$) Suppose $C$ is closed, $\{S_n\}$ is a sequence in $C$ and $s_n \rightarrow L$. Suppose $L\notin C$, then $\exists r > 0$ s.t. $B_{r}(L) \subseteq E\setminus C$ since $E\setminus C$ is open. Since $s_n \rightarrow L$, $\exists N \in \mathbb{N}$ s.t. $s_n \in B_r(L)$ for all $n > N$, contradiction, since $s_n \in L$ and $B_r(L) \cap C = \varnothing$.  
 	($\impliedby$) We prove the contrapositive.  Suppose $C$ is not closed, then $E \setminus C$ is not open. $\implies \exists p \in E \setminus C$ s.t. $\forall r > 0$, $B_r(p)\not\subset E \setminus C$, $B_r(p) \cap C \neq \varnothing$. In particular, $\forall n \in \mathbb{N}$, $\exists x_n \in B_{1/n}(p) \cap C$. Then $\{x_n\}$ is a sequence with $d(x_n,p) < \frac{1}{n}$. Given $\varepsilon > 0, \exists N$ s.t. $\frac{1}{N} < \varepsilon$. Hence for all $n > N$, $d(x_n,p) < \frac{1}{n} < \frac{1}{N} < \varepsilon$, which suggests that $x_n \rightarrow p \notin C$. So we prove that if $C$ is not closed, then $\exists$ a sequence $\{x_n\} \subseteq C$ with $x_n \rightarrow p \notin C$.
@@ -266,7 +268,6 @@ Proof:
 #TODO 
 Proof:
 	For (2), take it with the fact that convergent sequences are bounded and take $\varepsilon = \varepsilon/2M$, where $M$ is and upper bound for both of the sequence.
-
 
 >[!important] Def (Inferior, Closure, Boundary)
 >Let $(E,d)$ be a metric space, $S \subseteq E$ a subset, then:
@@ -352,8 +353,8 @@ Proof: Suppose $s_n \rightarrow L$ in $(E,d)$, then given $\varepsilon > 0, \exi
 Ex. $S_n = \sum_{k=1}^n\frac{1}{k}, \lim S_n = \sum_{k=1}^{\infty}\frac{1}{k}$. Claim: it is not Cauchy. 
 	$s_{2n} - s_n = \frac{1}{n+1} + \cdots + \frac{1}{n+n}\geq \frac{1}{2n}+\cdots + \frac{1}{2n} = \frac{1}{2}$. Hence $\nexists N$ s.t. for $2n,n >N, |s_{2n}-s_n| < 1/2$. It is not epsilon-close.
 
-Remark. There are  $(E,d)$ where Cauchy sequence need not have a limit.
-	Consider $E = \mathbb{R}\setminus\{0\}, d = |x-y|$. Then $S_n = \frac{1}{n} \rightarrow L = 0 \in \mathbb{R}$, but $L \notin \mathbb{R}$
+Remark. There are $(E,d)$ where Cauchy sequence need not have a limit in $E$.
+	Consider $E = \mathbb{R}\setminus\{0\}, d = |x-y|$. Then $S_n = \frac{1}{n} \rightarrow L = 0 \in \mathbb{R}$, but $L \notin \mathbb{R}\setminus \{0\}$
 
 >[!note] Def (Completeness) 
 >A metric space $(E,d)$ is complete if every Cauchy sequences converges.
@@ -445,7 +446,7 @@ $O: E$ is open $\iff \forall x \in O, \exists r(x) = r >0$ s.t. $B_{r(x)}(x) \su
 We prove 3 properties of open sets: 1) $\varnothing, E$ are open. 2) If $O,O'$ are open then so is $O \cap O'$. 3) If $\{O_{\alpha}\}_{\alpha \in A}$ is a collection of open sets, then $\cup_{\alpha \in A} O_{\alpha}$ is open.
 
 >[!note] Def (Topology)
->A topoloogy $\mathcal{T}$ on a set $X$ is a collection of subset of $X$ (so $\mathcal{T} \subseteq \mathbb{P}(X)$,where $\mathbb{P}(X)$ is the power set) whose elements are called "open sets" s.t.
+>A topology $\mathcal{T}$ on a set $X$ is a collection of subset of $X$ (so $\mathcal{T} \subseteq \mathbb{P}(X)$,where $\mathbb{P}(X)$ is the power set) whose elements are called "open sets" s.t.
 >1) $\varnothing, X \in \mathcal{T}$
 >2) If $O,O'\in \mathcal{T}$, then  $O \cap O' \in \mathcal{T}$. 
 >3) $\forall\{O_{\alpha}\}_{\alpha \in A} \subseteq \mathcal{T}$, then $\cup_{\alpha \in A}O_{\alpha}\in\mathcal{T}$.
