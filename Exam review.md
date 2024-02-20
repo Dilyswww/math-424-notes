@@ -210,7 +210,7 @@ Theorem
 $f: (E,d) \rightarrow (E',d')$ is continuous $\iff \forall U \subseteq E', U$ open, $f^{-1}(U)$ is open.
 
 Corollary
-$f: (E,d) \rightarrow (E',d')$ is continuous iff $\forall$ closed sets $C \subseteq E'$, $f^{-1}(C)$ is closed.
+$f: (E,d) \rightarrow (E',d')$ is continuous $\iff\forall$  $C \subseteq E'$, $C$ closed, $f^{-1}(C)$ is closed.
 
  Def (Continuous function )
 A map/function $f: (X, \mathcal{T})\rightarrow (X', \mathcal{T}')$ between two topological spaces is continuous if $\forall U \in \mathcal{T}'$, $f^{-1}(U) \in \mathcal{T}$. i.e., preimages of open sets are open.

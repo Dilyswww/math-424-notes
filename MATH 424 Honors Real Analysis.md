@@ -193,7 +193,7 @@ Remark: $[0,1) \in \mathbb{R}$ is neither closed nor open.
 >[!note] Theorem 3.2.1
 > Let $(E,d)$ be a metric space, then
 >1) $\forall$ collection $\{U_i\}_{i \in I}$ of open sets in $E$, $\cup_{i \in I}U_i$ is open.
->2) $\forall \:k$, $\forall$ open sets $U_1,...,U_k, \:U_1 \cup ...\cup U_k$ is open, i.e., **finite** intersections of open sets are open. 
+>2) $\forall \:k$, $\forall$ open sets $U_1,...,U_k, \:U_1 \cup ...\cup U_k$ is open, i.e., **finite** union of open sets are open. 
 >3) Open balls are open.
 
 Proof:
@@ -422,6 +422,7 @@ Proof:
 >$$c_1 \lVert x \rVert \leq \lVert x \rVert' \leq c_2\lVert x \rVert$$
 >two metrics $d,d'$ are equivalent on a set $E$ if $\exists c_1,c_2 > 0$ s.t. $\forall x,y \in E$
 >$$c_1d(x,y)\leq d'(x,y)\leq c_2d(x,y)$$
+>Note that $c_1,c_2$ here are constants.
 
 **Theorem 3.4.9** $\frac{1}{n}\lVert x \rVert_1 \leq \lVert x \rVert_{\infty} \leq \lVert x \rVert_2 \leq \lVert x \rVert_1$ for all $x \in \mathbb{R}^n$
 Proof:
@@ -440,7 +441,7 @@ Proof:
 Proof:
 	Suppose $d: \mathbb{R}^n\times \mathbb{R}^n\rightarrow [0,\infty)$ is a metric equivalent to $d_1$, and $\{S_n\}$ is a Cauchy sequence with respect to $d$. Then $\{S_n\}$ is a Cauchy sequence with respect to $d_1$, hence converges, hence converges with respect to $d$. Since $d_2,d_{\infty}$ are equivalent to $d_1$, we are done.
 
-#### *Topology (Surprise!)
+#### *Topology
 Recall if $(E,d)$ is a metric space, then we have a notion of an open set 
 $O: E$ is open $\iff \forall x \in O, \exists r(x) = r >0$ s.t. $B_{r(x)}(x) \subseteq O$. 
 We prove 3 properties of open sets: 1) $\varnothing, E$ are open. 2) If $O,O'$ are open then so is $O \cap O'$. 3) If $\{O_{\alpha}\}_{\alpha \in A}$ is a collection of open sets, then $\cup_{\alpha \in A} O_{\alpha}$ is open.
@@ -501,12 +502,12 @@ Proof:
 **Theorem 3.5.2** Let $(E,d)$ be a metric space. If $K \subseteq E$ is compact, then $K$ is closed and bounded.
 Proof:
 	($K$ is bounded) Choose any $x \in E$, then $E = \cup_{n=1}^{\infty}B_n(x)$, so $\{B_n(x)\}_{n=1}^{\infty}$ is an open cover of $K$. So $\exists n_1 < n_2 < \cdots < n_k$ s.t. $K \subseteq B_{n1}(x) \cap \cdots \cap B_{nk}(x) = B_{nk}(x)$
-	($K$ is closed)    If $K = E$, we are done, $K$ is closed since $\varnothing = E\setminus K$ is open. If $K \neq E$, and let $x \in E \setminus K$, then $K \subseteq E \setminus \{x\}$. $U_r = E \setminus \overline{B_r}(x)$ is open for all $r$. Now consider the union. $\cup_{r > 0}(E \setminus \overline{B_r}(x)) = E \setminus \cap_{r>0}\overline{B_r}(x) = E \setminus \{x\} \supseteq K$ $\implies \{U_r\}_{r > 0}$ is an open cover of $K$. Since $K$ is compact, $\exists r_1<\cdots<r_k$ s.t. $K \subseteq U_{r1}\cup \cdots \cup U_{rk} = E \setminus (\overline{B_{r1}}(x)\cap \cdots \cap \overline{B_{rk}}(x)) = E \setminus \overline{B_{r1}}(x)$ (since it is closed) $\implies B_{r1}(k)\cap K = \varnothing \implies E\setminus K$ is open.
-*The converse is false by simply taking any metric that is bounded: d = min(|x-y|,1), R: closed and bounded, but not compact*
+	($K$ is closed)    If $K = E$, we are done, $K$ is closed since $\varnothing = E\setminus K$ is open. If $K \neq E$, let $x \in E \setminus K$, then $K \subseteq E \setminus \{x\}$. $U_r = E \setminus \overline{B_r}(x)$ is open for all $r$. Now consider the union. $\cup_{r > 0}(E \setminus \overline{B_r}(x)) = E \setminus \cap_{r>0}\overline{B_r}(x) = E \setminus \{x\} \supseteq K$ $\implies \{U_r\}_{r > 0}$ is an open cover of $K$. Since $K$ is compact, $\exists r_1<\cdots<r_k$ s.t. $K \subseteq U_{r1}\cup \cdots \cup U_{rk} = E \setminus (\overline{B_{r1}}(x)\cap \cdots \cap \overline{B_{rk}}(x)) = E \setminus \overline{B_{r1}}(x)$ (since it is closed) $\implies B_{r1}(k)\cap K = \varnothing \implies E\setminus K$ is open.
+*The converse is false by simply taking any metric that is bounded: d = min(|x-y|,1), R: closed and bounded, but not compact. Since every singletons $\{x\}$ is closed and open, there is no finite subcover of any infinite set*.
 Remark. In $(\mathbb{R}^n,d_2)$ a metric space is compact $\iff$ it is closed and bounded
 
 Remark. In general, compact sets need not be closed.
-Ex. $X =\{a,b\}, \mathcal{T} = (X,\varnothing, \{a\})$. $K = \{a\}$ is not closed since $X \setminus K = \{b\}\notin \mathcal{T}$
+Ex. $X =\{a,b\}, \mathcal{T} = (X,\varnothing, \{a\})$. $K = \{a\}$ is compact (finite) but not closed since $X \setminus K = \{b\}\notin \mathcal{T}$
 Note that singletons are compact since they are finite.
 
 **Theorem 3.5.3** Let $X$ be a topological space, $K_1 \supseteq K_2 \supseteq \cdots \supseteq K_n \supseteq \cdots$ a sequence of compact sets, then $K = \cap_{n=1}^{\infty}K_n \neq \varnothing$ (and compact: since the intersection sets in $K_1$)
@@ -520,11 +521,13 @@ Proof:
 >[!important] Def (Sequentially compact)
 >A subset $K$ of a topological space is sequentially compact if every sequence in $K$ has a convergent subsequence whose limit is in $K$.
 
-Ex 3.5.1. Suppose $K\subseteq \mathbb{R}^n$ is closed and bounded. Then $K$ is sequentially compact: #TODO  ^3c6be4
+Ex 3.5.1. Suppose $K\subseteq \mathbb{R}^n$ is closed and bounded. Then $K$ is sequentially compact:  
+Proof:
+	Every bounded sequence $\{s_n\}$ in $K$ has a convergent subsequence $\{s_{n_k}\}$ by Bolzano-Weierstrass since $K is bounded. Since $K$ is closed, $L = \lim_{n\rightarrow \infty}\{s_{n_k}\} \in K$. 
 
 **Lemma 3.5.5** Suppose $(E,d)$ is a metric space and $K \subseteq E$ is compact, then $K$ is sequentially compact.
 Proof:
-	Let $\{S_n\}$ be a sequence in $K$. We argue that $\exists x \in K$ s.t. $\forall \varepsilon > 0, \{n|s_n \in B_{\varepsilon}(x)\}$ is infinite, and this (\*) implies that there is a subsequence $\{S_{n_k}\}$ that converges to $x$(\*). Take $\varepsilon = 1, 1/2,1/3\cdots$ and find $n_1<n_2<\cdots <n_k\cdots$ s.t. $S_{n_k} \in B_{1/n}(x)$. To see this(\*), suppose it is false. Then $\forall x \in K$, $\exists \varepsilon = \varepsilon(x)$ s.t. $\{n | s_n \in B_{\varepsilon(x)}(x)\}$ is finite. Then $\{B_{\varepsilon(x)}(x)\}_{x \in K}$ is an open cover of $K$. Since $K$ is compact, $\exists x_1,\cdots x_l \in K$ s.t. $K \subseteq B_{\varepsilon(x_1)}(x_1) \cap \cdots \cap B_{\varepsilon(x_l)}(x_l)$. 
+	Let $\{S_n\}$ be a sequence in $K$. We argue that (1) $\exists x \in K$ s.t. $\forall \varepsilon > 0, \{n|s_n \in B_{\varepsilon}(x)\}$ is infinite, and this (1) implies that there is a subsequence #question  $\{S_{n_k}\}$ that converges to $x$. Take $\varepsilon = 1, 1/2,1/3\cdots$ and find $n_1<n_2<\cdots <n_k\cdots$ s.t. $S_{n_k} \in B_{1/n}(x)$. To see (1), suppose it is false. Then $\forall x \in K$, $\exists \varepsilon = \varepsilon(x)$ s.t. $\{n | s_n \in B_{\varepsilon(x)}(x)\}$ is finite. Then $\{B_{\varepsilon(x)}(x)\}_{x \in K}$ is an open cover of $K$. Since $K$ is compact, $\exists x_1,\cdots x_l \in K$ s.t. $K \subseteq B_{\varepsilon(x_1)}(x_1) \cap \cdots \cap B_{\varepsilon(x_l)}(x_l)$. But then $\{n| s_n\in B_{\varepsilon(x_1)}(x_1)\cup\cdots \cup B_{\varepsilon(x_l)}(x_l)\}$ is finite, a contradiction.
 
 
 >[!important] Def (Totally bounded)
@@ -532,12 +535,12 @@ Proof:
 
 **Lemma 3.5.6** Suppose $(E,d)$ is a metric space, $K \subseteq E$ sequentially compact. Then $(K,d)$ is complete and totally bounded.
 Proof: 
-	Suppose $\{S_n\} \in K$ is Cauchy. Since $K$ is sequentially compact, $\{S_n\}$ has a convergent subsequence and since $\{S_n\}$ is Cauchy, $\{S_n\}$ converges to lim $S_{n_k}$. Suppose $K$ is not totally bounded, then $\exists \varepsilon > 0$ s.t. $K$ cannot be covered by finitely many $\varepsilon$ balls $\implies$ $\exists x_1 \in K$ s.t. $K\setminus B_{\varepsilon}(x_1) \neq \varnothing$. Then $\exists x_2 \in K \setminus B_{\varepsilon}(x_1)$ s.t. $K \setminus (B_{\varepsilon}(x_1) \cup B_{\varepsilon}(x_2)) \neq \varnothing$.... $\exists x_n \in K \setminus (B_{\varepsilon}(x_1) \cup \cdots \cup B_{\varepsilon}(x_{n-1}))$ s.t. $K \setminus (B_{\varepsilon}(x_1) \cup \cdots \cup B_{\varepsilon}(x_{n-1}))\neq \varnothing$ (\*). We get a sequence $\{x_n\}$ in $K$ with $d(x_n,x_m) \geq \varepsilon$ for all $n \neq m$. Then $\{x_n\}$ has no Cauchy subsequence $\implies \{x_n\}$ has no convergent subsequences. This contradicts sequential compactness.
+	Suppose $\{S_n\} \in K$ is Cauchy. Since $K$ is sequentially compact, $\{S_n\}$ has a convergent subsequence and since $\{S_n\}$ is Cauchy, $\{S_n\}$ converges to $L=$ lim $S_{n_k}$ #question . Suppose $K$ is not totally bounded, then $\exists \varepsilon > 0$ s.t. $K$ cannot be covered by finitely many $\varepsilon$ balls $\implies$ $\exists x_1 \in K$ s.t. $K\setminus B_{\varepsilon}(x_1) \neq \varnothing$. Then $\exists x_2 \in K \setminus B_{\varepsilon}(x_1)$ s.t. $K \setminus (B_{\varepsilon}(x_1) \cup B_{\varepsilon}(x_2)) \neq \varnothing$.... $\exists x_n \in K \setminus (B_{\varepsilon}(x_1) \cup \cdots \cup B_{\varepsilon}(x_{n-1}))$ s.t. $K \setminus (B_{\varepsilon}(x_1) \cup \cdots \cup B_{\varepsilon}(x_{n-1}))\neq \varnothing$ (\*). We get a sequence $\{x_n\}$ in $K$ with $d(x_n,x_m) \geq \varepsilon$ for all $n \neq m$. Then $\{x_n\}$ has no Cauchy subsequence $\implies \{x_n\}$ has no convergent subsequences. This contradicts sequential compactness.
 	\*: This is a recursive definition, $\{x_n\}$ is infinite.
 
 **Lemma 3.5.7** Let $(E,d)$ be a metric space, $K \subseteq E$ complete and totally bounded, then $K$ is compact. 
 Proof:
-	Suppose $\exists$ an open cover $\{U_{\alpha}\}_{\alpha \in A}$ of $K$ with no finite subcover. Since $K$ is totally bounded, $K$ can be covered with finitely many balls of radius 1. $\implies \exists x_0 \in K$ s.t. $B_1(x_0)$ cannot be covered by finitely many $U_{\alpha}$. There is a finite cover of $K$ by balls of radius $1/2 \implies$ $\exists x_1$ s.t. $B_{1/2}(x_1)\cap B_1{x_0} \neq \varnothing$ and $B_{1/2}(x_1)$ cannot be covered by finitely many $U_{\alpha}$. Proceeding this way we get a sequence $x_0,x_1,\cdots,x_n,\cdots$  s.t. $B_{1/2^n}(x_n) \cap B_{1/2^{n-1}}(x_{n-1})$, and each $B_{1/2^n}(x_n)$ cannot be covered by finitely manny $U_{\alpha}$s. Then $d(x_n, x_{n+k}) \leq d(x_n,x_{n+1}) + d(x_{n+1}, x_{n+2}) + \cdots + d(x_{n+k-1},x_{n+k})  < \frac{1}{2^{n-1}} (1 + \frac{1}{2} + \cdots + \frac{1}{2^k}) < \frac{1}{2^{n-2}}$ Thus $\{x_n\}$ is Cauchy. Since $K$ is complete, $x_n \rightarrow y$ for some $y \in K$. Since $\{U_{\alpha}\}_{\alpha\in A}$ is a cover, $\exists \alpha_0$ s.t. $y \in U_{\alpha_0}$. Since $U_{\alpha_0}$ is open, $\exists r > 0$ s.t. $B_r(y_0) \subseteq U_{\alpha_0}$. Since $x_n \rightarrow y$, $\exists n$ s.t. $x_n \in B_{r/2}(y)$ and $\frac{1}{2^n} < \frac{r}{2}$. $B_{1/2^n}(x_n) \subseteq B_r(y) \subseteq U_{\alpha_0}$. But according to the construction of $B_{1/2^n}(x_n)$, we get a contradiction.
+	Suppose $\exists$ an open cover $\{U_{\alpha}\}_{\alpha \in A}$ of $K$ with no finite subcover. Since $K$ is totally bounded, $K$ can be covered with finitely many balls of radius 1. $\implies \exists x_0 \in K$ s.t. $B_1(x_0)$ cannot be covered by finitely many $U_{\alpha}$. There is a finite cover of $K$ by balls of radius $1/2 \implies$ $\exists x_1$ s.t. $B_{1/2}(x_1)\cap B_1{x_0} \neq \varnothing$ and $B_{1/2}(x_1)$ cannot be covered by finitely many $U_{\alpha}$. Proceeding this way we get a sequence $x_0,x_1,\cdots,x_n,\cdots$  s.t. $B_{1/2^n}(x_n) \cap B_{1/2^{n-1}}(x_{n-1})$, and each $B_{1/2^n}(x_n)$ cannot be covered by finitely manny $U_{\alpha}$s. Then $d(x_n, x_{n+k}) \leq d(x_n,x_{n+1}) + d(x_{n+1}, x_{n+2}) + \cdots + d(x_{n+k-1},x_{n+k})  < \frac{1}{2^{n-1}} (1 + \frac{1}{2} + \cdots + \frac{1}{2^k}) < \frac{1}{2^{n-2}}$Thus $\{x_n\}$ is Cauchy. Since $K$ is complete, $x_n \rightarrow y$ for some $y \in K$. Since $\{U_{\alpha}\}_{\alpha\in A}$ is a cover, $\exists \alpha_0$ s.t. $y \in U_{\alpha_0}$. Since $U_{\alpha_0}$ is open, $\exists r > 0$ s.t. $B_r(y_0) \subseteq U_{\alpha_0}$. Since $x_n \rightarrow y$, $\exists n$ s.t. $x_n \in B_{r/2}(y)$ and $\frac{1}{2^n} < \frac{r}{2}$. $B_{1/2^n}(x_n) \subseteq B_r(y) \subseteq U_{\alpha_0}$. But according to the construction of $B_{1/2^n}(x_n)$, we get a contradiction.
 
 >[!note] Summary
 >For a subset $K$ of a metric space, (1)$\implies$ (2), (2)$\implies$ (3), (3)$\implies$ (1), thus TFAE
@@ -550,7 +553,7 @@ Proof:
 
 Proof:
 	($\implies$) is true for any metric space.
-	($\impliedby$) Suppose $K$ is closed and bounded, then by [[#^3c6be4 |Ex 3.5.1]], $K$ is sequentially compact and hence compact.
+	($\impliedby$) Suppose $K$ is closed and bounded, then by [[#^3357e2|Ex 3.5.1]], $K$ is sequentially compact and hence compact.
 
 Ex. $\mathbb{R}, d=\min(1, |x-y|)$. $(\mathbb{R},d)$ is bounded but not totally bounded since it's complete but not compact. $B_{1/2}^d(x)=(x-1/2,x+1/2), \forall x$ and $\mathbb{R}$ cannot be covered by finitely many balls of radius $1/2$. Thus only in $(\mathbb{R},d_2)$ or ($d_1$ or $d_{\infty}$) bounded $\implies$ totally bounded.
 
@@ -575,10 +578,13 @@ Proof:
 	($\implies$) Suppose $f$ is continuous, $U \subseteq E'$ open, then $\forall p \in f^{-1}(U)$, $f(p) \in U \implies \exists \varepsilon > 0$ s.t. $B_{\varepsilon}(f(p))\subseteq U$. Since $f$ is continuous at $p$, $\exists \delta > 0$ s.t. $f(B_{\delta}(p))\subseteq B_{\varepsilon}(f(p))$, which implies that $f(B_{\delta}(p))\subseteq U$, and thus $B_{\delta}(p)\subseteq f^{-1}(U)$. Since $p \in f^{-1}(U$) is arbitrary, $f^{-1}(U)$ is open.
 	($\impliedby$) Suppose $\forall U \subseteq E', U$ open, $f^{-1}(U)$ is open. Given $p \in E$ and $\varepsilon > 0$, $B_{\varepsilon}(f(p))$ is open in $E$. Since $p \in f^{-1}(f(p))\subseteq f^{-1}(B_{\varepsilon}(f(p)))$ and $f^{-1}(B_{\varepsilon}(f(p)))$ is open, $\exists \delta > 0$ s.t. $f(B_{\delta}(p))\subseteq B_{\varepsilon}(f(p))$ and $f$ is continuous at $p$. 
 
-**Corollary 4.1.2** $f: (E,d) \rightarrow (E',d')$ is continuous iff $\forall$ closed sets $C \subseteq E'$, $f^{-1}(C)$ is closed.
+some helpful extensions:
+	($\implies$) Suppose $f$ is continuous and $U$ is an open subset of $E'$. We want to show that $f^{-1}(U)$ is open. Let $p \in f^{-1}(U)$, then $f(p) \in U$ since $f$ is continuous. Since $U$ is open, $\exists \varepsilon > 0$ s.t. $B_{\varepsilon}(p) \subseteq E'$ is open. Since $f$ is continuous at $p$, $\exists \delta > 0$ s.t. if $d(p,x) < \delta$, then $d'(f(p), f(x)) < \varepsilon$, i.e., if $x \in B_{\delta}(p)$, then $f(x) \in B_{\varepsilon}(p)\subseteq E'$. Hence $f(p)\in B_{\varepsilon}(p) \subseteq U$ and that $B_{\delta}(p) \subseteq f^{-1}(U)$. Since $p$ is any point of $f^{-1}(U)$, the set $f^{-1}(U)$ is open.
+
+**Corollary 4.1.2** $f: (E,d) \rightarrow (E',d')$ is continuous $\iff\forall C \subseteq E'$, $C$ closed, $f^{-1}(C)$ is closed.
 
 >[!note] Def (Continuous function )
->A map/function $f: (X, \mathcal{T})\rightarrow (X', \mathcal{T}')$ between two topological spaces is continuous if $\forall U \in \mathcal{T}'$, $f^{-1}(U) \in \mathcal{T}$. i.e., preimages of open sets are open.
+>A map/function $f: (X, \mathcal{T})\rightarrow (X', \mathcal{T}')$ between two topological spaces is continuous if $\forall U \in \mathcal{T}'$, $U$ open, $f^{-1}(U) \in \mathcal{T}$. i.e., preimages of open sets are open.
 
 Remark. Theorem 4.1.1 says that the notion of continuity of a map depends only on the topologies:
 If $d_1,d_2$ are two metrics s.t. $\mathcal{T}_{d_1} = \mathcal{T}_{d_2}$, $d_1',d_2'$ are two metrics s.t. $\mathcal{T}_{d_1'} = \mathcal{T}_{d_2'}$. Then $f: (E, d_1) \rightarrow (E', d_1')$ is continuous iff  $f: (E, d_2) \rightarrow (E', d_2')$ is continuous.
@@ -588,7 +594,7 @@ Proof:
 	Suppose $W \subseteq Z$ is open, then $g^{-1}(W) \subseteq Y$ is open $\implies f^{-1}(g^{-1}(W))$ is open in $X$. But $f^{-1}(g^{-1}(W)) = (f\circ g)^{-1}(W)$, so $(f\circ g)^{-1}(W)$ is open in $X$ and hence $f\circ g$ is continuous.
 
 **Theorem 4.1.4** Images of compact sets under continuous functions are compact.  If $f: X \rightarrow Y$ is continuous and $K \subseteq X$ is compact, then $f(X) \subseteq Y$ is compact.
-Proof:
+Proof: 
 	Let $\{U_{\alpha}\}_{\alpha \in A}$ be an open cover of $f(K)$, then $\{f^{-1}(U_{\alpha})\}_{\alpha \in A}$ is an open cover of $K$. Since $K$ is compact, $\exists \alpha_1 \cdots \alpha_n$ s.t. $K \subseteq f^{-1}(U_{\alpha_1}) \cup \cdots \cup f^{-1}(U_{\alpha_n})$ $\implies f(K) \subseteq U_{\alpha_1}\cup \cdots \cup U_{\alpha_n}$ and $f(K)$ is compact.
 
 **Corollary 4.1.5** Let $(E,d)$ be a metric space, $X$ a topological space, $K\subseteq X$ compact and $f: X \rightarrow E$ is continuous, then $f(k)$ is complete, totally bounded, sequentially compact and closed. 
@@ -616,11 +622,12 @@ Ex. $f:\mathbb{R}\rightarrow \mathbb{R}, f(x) = 1, x=0,f(x) = 0, o.w.$ Then $\li
 **Lemma 4.2.1** $E,E'$ metric spaces, $p$ cluster point of $E$. Then $f: E \rightarrow E'$ is continuous at $p \iff$ $\lim_{x \rightarrow p} f(x) = f(p)$.
 Proof:
 	#TODO 
+	Note that if $p$ is not a cluster point, then $\exists r$ s.t. $B_r(p)\setminus \{p\}\cap E = \varnothing$. i.e. $B_r(p) = \{p\}$. And then any $f: E \rightarrow E'$ is continuous at $p$. 
 
 **Theorem 4.2.2** $E,E'$ metric spaces, $f: E \rightarrow E'$ is continuous at $p \in E$ $\iff \forall$ sequences $\{S_n\} \in E$ with $S_n \rightarrow p$, we have $f(s_n) \rightarrow f(p)$.
 Proof:
 	($\implies$) Suppose $S_n \rightarrow p$ and $f$ is continuous. Then given $\varepsilon > 0$, $\exists \delta > 0$ s.t. $d(x,p) < \delta \implies d'(f(x),f(p)) < \varepsilon$. Since $S_n \rightarrow p$, $\exists N$ s.t. if $n \geq N$, $d(x,p) < \delta \implies d'(f(x),f(p)) < \varepsilon \implies f(p) \rightarrow f(x)$
-	($\impliedby$) Suppose $f$ is not continuous at $p$. We construct $\{S_n\}$ s.t. $S_n \rightarrow p$ but $f(S_n) \not\rightarrow f(p)$. Since $F$ is not continuous at $p$, $\exists \varepsilon_0 > 0$ s.t. $\forall \delta > 0$, $\exists x_r \in B_{\delta}(p)$ with $f(x_{\delta})\notin B_{\varepsilon_0}(f(p))$. Let $S_n = x_{1/n}$. Then $s_n \in B_{1/n}(p)$ (hence $s_n \rightarrow p$) and $f(s_n)\notin B_{\varepsilon_0}(f(p))$  (hence $f(s_n) \not\rightarrow f(p)$)
+	($\impliedby$) We prove the contrapositive. Suppose $f$ is not continuous at $p$. We construct $\{S_n\}$ s.t. $S_n \rightarrow p$ but $f(S_n) \not\rightarrow f(p)$. Since $f$ is not continuous at $p$, $\exists \varepsilon_0 > 0$ s.t. $\forall \delta > 0$, $\exists x_r \in B_{\delta}(p)$ with $f(x_r)\notin B_{\varepsilon_0}(f(p))$. Let $S_n = x_{1/n}$. Then $s_n \in B_{1/n}(p)$ (hence $s_n \rightarrow p$) and $f(s_n)\notin B_{\varepsilon_0}(f(p))$  (hence $f(s_n) \not\rightarrow f(p)$)
 
 **Theorem 4.2.3** Suppose $f,g: (E,d) \rightarrow \mathbb{R}$ are continuous at $p \in E$. Then $f + g, f\cdot g$ are continuous at $p$. If $g(p) \neq 0$, $f/g$ is also continuous.
 Proof:
@@ -646,7 +653,7 @@ Ex. $f: (0,1) \rightarrow \mathbb{R}, f(x) = \sin(1/x)$. Claim: $f$ is not unifo
 
 **Theorem 4.2.6** Suppose $f: E \rightarrow E'$ is continuous and $E$ is compact, then $f$ is uniformly continuous. 
 Proof:
-	Given $\varepsilon$ we want $\delta = \delta_{\varepsilon}$ s.t. $d(x,y) < \delta \implies d(f(x),f(y)) < \varepsilon$. Since $f$ is continuous, $\forall x$, $\exists \delta_x$ s.t. $d(x,y) < \delta_x \implies d'(f(x),f(y)) < \varepsilon/2$. $\{B_{\delta_{x/2}}(x)\}_{x \in E}$ is an open cover of $E$ $\implies \exists n,x_1,\cdots, x_n$ s.t. $E = B_{\delta_{x1}/2} \cup \cdots \cup B_{\delta_{x_n}/2}(x_n)$. Let $\delta = \min(\delta x_1/2,\cdots \delta x_n/2)$. Suppose $d(p,q) < \delta$. Then $q \in B_{\delta x)i /2}(x)$ for some $i$. Then $d(p,x_i) \leq d(p,q) + d(q,x_i) < \delta + \delta_ {x_1}/2 \leq \delta_{x_i}$. $p \in B_{\delta_{x_i}}(x_i)$. Since $p,q \in B_{delta_{x_i}}(x_i)$, $d'(f(p),f(q)) \leq d'(f(p), f(x_i)) + d'(f(x_i),f(p)) < \varepsilon /2 + \varepsilon /2 = \varepsilon$. 
+	Given $\varepsilon$ we want $\delta = \delta_{\varepsilon}$ s.t. $d(x,y) < \delta \implies d(f(x),f(y)) < \varepsilon$. Since $f$ is continuous, $\forall x$, $\exists \delta_x$ s.t. $d(x,y) < \delta_x \implies d'(f(x),f(y)) < \varepsilon/2$. $\{B_{\delta_{x/2}}(x)\}_{x \in E}$ is an open cover of $E$ $\implies \exists n,x_1,\cdots, x_n$ s.t. $E = B_{\delta_{x1}/2} \cup \cdots \cup B_{\delta_{x_n}/2}(x_n)$. Let $\delta = \min(\delta x_1/2,\cdots \delta x_n/2)$. Suppose $d(p,q) < \delta$. Then $q \in B_{\delta x_i /2}(x)$ for some $i$. Then $d(p,x_i) \leq d(p,q) + d(q,x_i) < \delta + \delta_ {x_1}/2 \leq \delta_{x_i}$. $p \in B_{\delta_{x_i}}(x_i)$. Since $p,q \in B_{\delta_{x_i}}(x_i)$, $d'(f(p),f(q)) \leq d'(f(p), f(x_i)) + d'(f(x_i),f(p)) < \varepsilon /2 + \varepsilon /2 = \varepsilon$. 
 
 >[!note] Def (Pointwise continuity)
 >$\{f_n:(E,d)\rightarrow (E',d')\}_{n=1}^{\infty}$ sequence of functions between two metric spaces. The sequence $\{f_n\}$ converges pointwise to $f: E\rightarrow E'$ if $\forall p \in E$, $f_n(p) \rightarrow f(p)$
@@ -690,55 +697,4 @@ Exercise. $D$ is a metric. Then $f_n \rightarrow f$ in $(C(E,E'),D) \iff f_n \ri
 
 
 # Chapter 7 Interchange of limit operations
-
->$$\lim \inf S_n := \lim V_n = \lim_{n\rightarrow \infty} \inf\{S_n|n\geq N\}$$ 
-
-Ex. $S_n = (-1)^n, V_N = \sup \{(-1)^n|n\geq N\} = 1$. $S_n = -n, V_N = \sup \{-n|n \geq N\} = -N, V_N \rightarrow -\infty$
-Remark. $\inf\{S_n | n \geq N\} \leq S_N \leq \sup\{S_n | n \geq N\}$
-Remark. Given $\{S_n\}$ not bounded above, $\sup\{S_n | n \geq N\} = + \infty$. $\lim \sup S_n := + \infty$. Similar definition for lim inf. 
-	Ex. $S_n = (-1)^nn$, $\lim \sup S_n = +\infty, \lim \inf S_n = -\infty$
-
->[!note] Theorem
->Let $\{S_n\}$ be a sequence in $\mathbb{R}$
->1) If $\{S_n\} \rightarrow \pm \infty$ or converges, then $\lim \inf S_n = \lim S_n = \lim \sup S_n$.
->2) If $\lim \inf S_n = \lim \sup S_n$ (could be $\pm \infty$), then $\lim \inf S_n = \lim S_n = \lim \sup S_n$.
-
-Proof:
-	1) Let $L = \lim S_n$. Then $\forall \varepsilon > 0, \exists N$ s.t. $\forall n \geq N, |S_n - L| < \varepsilon/2$, or, equivalently, $L - \varepsilon/2 < L < L + \varepsilon/2$. Then $\forall M \geq N,$ $L - \varepsilon < L - \varepsilon/2 \leq \inf\{S_n | n\geq M\} \leq \sup\{S_n | n\geq M\}\leq L + \varepsilon/2 < L + \varepsilon$. Hence we have $\lim \inf S_n = L = \lim\sup S_n$.
-	2) If $\lim \inf S_n = L = \lim\sup S_n$, then $\forall \varepsilon > 0, \exists N$ s.t. for all $M \geq  N$, $L - \varepsilon < \inf\{S_n|n\geq M\} \leq S_M \leq \sup\{S_n|n \geq M\} < L + \varepsilon \implies S_n \rightarrow L$
-
-## 3.4 Completeness
-
->[!important] Def (Cauchy Sequences)
->A sequence $\{S_n\}$ in a metric space $(E,d)$ is Cauchy if $\forall \varepsilon > 0, \exists N$ s.t. $\forall n,m > N, d(s_n,s_m) < \varepsilon$
-
-**Lemma 3.4.1** Any convergent sequence $\{S_n\}$ in $(E,d)$ is Cauchy.
-Proof: Suppose $s_n \rightarrow L$ in $(E,d)$, then given $\varepsilon > 0, \exists N$ s.t. for $n> N, d(s_n,L) < \varepsilon/2$. For $n,m > N$, $d(s_n,s_m) \leq d(s_n,L) + d(s_m,L) = \varepsilon/2\cdot 2 = \varepsilon$.
-Ex. $S_n = \sum_{k=1}^n\frac{1}{k}, \lim S_n = \sum_{k=1}^{\infty}\frac{1}{k}$. Claim: it is not Cauchy. 
-	$s_{2n} - s_n = \frac{1}{n+1} + \cdots + \frac{1}{n+n}\geq \frac{1}{2n}+\cdots + \frac{1}{2n} = \frac{1}{2}$. Hence $\nexists N$ s.t. for $2n,n >N, |s_{2n}-s_n| < 1/2$. It is not epsilon-close.
-
-Remark. There are  $(E,d)$ where Cauchy sequence need not have a limit.
-	Consider $E = \mathbb{R}\setminus\{0\}, d = |x-y|$. Then $S_n = \frac{1}{n} \rightarrow L = 0 \in \mathbb{R}$, but $L \notin \mathbb{R}$
-
->[!note] Def (Completeness) 
->A metric space $(E,d)$ is complete if every Cauchy sequences converges.
-
-We want to show that. 1) $\mathbb{R},\mathbb{R}^n$ are complete. 2) Any subset of a complete metric space is complete.
-(see below)
-
-**Lemma 3.4.2** Let $(E,d)$ be a metric space and $\{S_n\}$ a Cauchy sequence in $E$. Then $\{S_n\}_{n \in \mathbb{N}}$ is bounded.
-Proof:
-	Since it is a Cauchy sequence, $\exists N$ s.t. for $m,n \geq N, d(s_n,s_m) < 1$. Let $r = \max\{d(s_1,s_n),\cdots d(s_{N-1},s_N),1\} + 1$, then $\forall k, d(s_n,s_k) < r$.
-
-**Lemma 3.4.3** Suppose $\{S_n\}$ is a Cauchy sequence and $\{S_{n_k}\}$ is a convergent subsequence with $S_{n_k} \rightarrow L$. Then $S_n \rightarrow L$ as well.
-Proof:
-	Since $S_{n_k} \rightarrow L$, $\forall \varepsilon > 0, \exists k$ s.t. $d(S_{n_l},L)<\varepsilon /2, \forall l > k$. Since $\{S_n\}$ is a Cauchy sequence. Then $\exists N$ s.t. for $n,m > N, d(s_n,s_m) \leq \varepsilon / 2$. Then for $n > \max\{N,k\} = M$, $d(s_n,s_{n_M})\leq \varepsilon/2$ since $n_M \geq M \geq N$ and $d(s_{n_M}, L) < \varepsilon/2$. Then $d(s_n,L) \leq d(s_n,s_{n_M}) + d(s_{n_M},L) = \varepsilon$
-
-**Lemma 3.4.4** Any closed subsets $C$ of a complete metric space $(E,d)$ is complete.
-Proof:
-	Let $\{S_n\}$ be a Cauchy sequence in $E$ with respect to metric $d$. Then $\{S_n\}$ is a Cauchy sequence in $E$. Since $E$ is complete, $\{S_n\}$ converges to some limit $L \in E$. Since $\{S_n\}\subseteq C$ and $C$ is closed, we have $L \in C$ and thus $C$ is complete.
-
-We then show that $\mathbb{R},\mathbb{R}^n$ are complete. Let's start with $\mathbb{R}$.
-
->[!note] Theorem (Bolzano–Weierstrass in $\mathbb{R}$)
 
