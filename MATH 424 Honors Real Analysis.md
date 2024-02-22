@@ -1,9 +1,9 @@
->This is the lecture notes based on Professor Eugene Lerman's MATH 424 Honors Real Analysis course at UIUC.
+>This is the notes for the basic of calculus based on Professor Eugene Lerman's lecture notes of MATH 424 Honors Real Analysis at UIUC. In case of broken down preview, download the markdown or see the [[MATH 424 Honors Real Analysis.pdf|pdf]].
 
 
 Reference:
-Introduction to Analysis, Rosenlicht
-Analysis I and Analysis II, Terence Tao
+>Introduction to Analysis, Rosenlicht
+>Analysis I and Analysis II, Terence Tao
 
 # Chapter 1 Skipped
 # Chapter 2 The real number system
@@ -523,7 +523,7 @@ Proof:
 
 Ex 3.5.1. Suppose $K\subseteq \mathbb{R}^n$ is closed and bounded. Then $K$ is sequentially compact:  
 Proof:
-	Every bounded sequence $\{s_n\}$ in $K$ has a convergent subsequence $\{s_{n_k}\}$ by Bolzano-Weierstrass since $K is bounded. Since $K$ is closed, $L = \lim_{n\rightarrow \infty}\{s_{n_k}\} \in K$. 
+	Every bounded sequence $\{s_n\}$ in $K$ has a convergent subsequence $\{s_{n_k}\}$ by Bolzano-Weierstrass since $K$ is bounded. Since $K$ is closed, $L = \lim_{n\rightarrow \infty}\{s_{n_k}\} \in K$.  ^7302cd
 
 **Lemma 3.5.5** Suppose $(E,d)$ is a metric space and $K \subseteq E$ is compact, then $K$ is sequentially compact.
 Proof:
@@ -543,7 +543,7 @@ Proof:
 	Suppose $\exists$ an open cover $\{U_{\alpha}\}_{\alpha \in A}$ of $K$ with no finite subcover. Since $K$ is totally bounded, $K$ can be covered with finitely many balls of radius 1. $\implies \exists x_0 \in K$ s.t. $B_1(x_0)$ cannot be covered by finitely many $U_{\alpha}$. There is a finite cover of $K$ by balls of radius $1/2 \implies$ $\exists x_1$ s.t. $B_{1/2}(x_1)\cap B_1{x_0} \neq \varnothing$ and $B_{1/2}(x_1)$ cannot be covered by finitely many $U_{\alpha}$. Proceeding this way we get a sequence $x_0,x_1,\cdots,x_n,\cdots$  s.t. $B_{1/2^n}(x_n) \cap B_{1/2^{n-1}}(x_{n-1})$, and each $B_{1/2^n}(x_n)$ cannot be covered by finitely manny $U_{\alpha}$s. Then $d(x_n, x_{n+k}) \leq d(x_n,x_{n+1}) + d(x_{n+1}, x_{n+2}) + \cdots + d(x_{n+k-1},x_{n+k})  < \frac{1}{2^{n-1}} (1 + \frac{1}{2} + \cdots + \frac{1}{2^k}) < \frac{1}{2^{n-2}}$Thus $\{x_n\}$ is Cauchy. Since $K$ is complete, $x_n \rightarrow y$ for some $y \in K$. Since $\{U_{\alpha}\}_{\alpha\in A}$ is a cover, $\exists \alpha_0$ s.t. $y \in U_{\alpha_0}$. Since $U_{\alpha_0}$ is open, $\exists r > 0$ s.t. $B_r(y_0) \subseteq U_{\alpha_0}$. Since $x_n \rightarrow y$, $\exists n$ s.t. $x_n \in B_{r/2}(y)$ and $\frac{1}{2^n} < \frac{r}{2}$. $B_{1/2^n}(x_n) \subseteq B_r(y) \subseteq U_{\alpha_0}$. But according to the construction of $B_{1/2^n}(x_n)$, we get a contradiction.
 
 >[!note] Summary
->For a subset $K$ of a metric space, (1)$\implies$ (2), (2)$\implies$ (3), (3)$\implies$ (1), thus TFAE
+>For a subset $K$ of a metric space, (1)$\implies$ (2), (2)$\implies$ (3), (3)$\implies$ (1), thus TFAE:
 >1) $K$ is compact
 >2) $K$ is sequentially compact
 >3) $K$ is compete and totally bounded.
@@ -553,7 +553,7 @@ Proof:
 
 Proof:
 	($\implies$) is true for any metric space.
-	($\impliedby$) Suppose $K$ is closed and bounded, then by [[#^3357e2|Ex 3.5.1]], $K$ is sequentially compact and hence compact.
+	($\impliedby$) Suppose $K$ is closed and bounded, then by [[#^7302cd|Ex 3.5.1]], $K$ is sequentially compact and hence compact.
 
 Ex. $\mathbb{R}, d=\min(1, |x-y|)$. $(\mathbb{R},d)$ is bounded but not totally bounded since it's complete but not compact. $B_{1/2}^d(x)=(x-1/2,x+1/2), \forall x$ and $\mathbb{R}$ cannot be covered by finitely many balls of radius $1/2$. Thus only in $(\mathbb{R},d_2)$ or ($d_1$ or $d_{\infty}$) bounded $\implies$ totally bounded.
 
@@ -578,8 +578,6 @@ Proof:
 	($\implies$) Suppose $f$ is continuous, $U \subseteq E'$ open, then $\forall p \in f^{-1}(U)$, $f(p) \in U \implies \exists \varepsilon > 0$ s.t. $B_{\varepsilon}(f(p))\subseteq U$. Since $f$ is continuous at $p$, $\exists \delta > 0$ s.t. $f(B_{\delta}(p))\subseteq B_{\varepsilon}(f(p))$, which implies that $f(B_{\delta}(p))\subseteq U$, and thus $B_{\delta}(p)\subseteq f^{-1}(U)$. Since $p \in f^{-1}(U$) is arbitrary, $f^{-1}(U)$ is open.
 	($\impliedby$) Suppose $\forall U \subseteq E', U$ open, $f^{-1}(U)$ is open. Given $p \in E$ and $\varepsilon > 0$, $B_{\varepsilon}(f(p))$ is open in $E$. Since $p \in f^{-1}(f(p))\subseteq f^{-1}(B_{\varepsilon}(f(p)))$ and $f^{-1}(B_{\varepsilon}(f(p)))$ is open, $\exists \delta > 0$ s.t. $f(B_{\delta}(p))\subseteq B_{\varepsilon}(f(p))$ and $f$ is continuous at $p$. 
 
-some helpful extensions:
-	($\implies$) Suppose $f$ is continuous and $U$ is an open subset of $E'$. We want to show that $f^{-1}(U)$ is open. Let $p \in f^{-1}(U)$, then $f(p) \in U$ since $f$ is continuous. Since $U$ is open, $\exists \varepsilon > 0$ s.t. $B_{\varepsilon}(p) \subseteq E'$ is open. Since $f$ is continuous at $p$, $\exists \delta > 0$ s.t. if $d(p,x) < \delta$, then $d'(f(p), f(x)) < \varepsilon$, i.e., if $x \in B_{\delta}(p)$, then $f(x) \in B_{\varepsilon}(p)\subseteq E'$. Hence $f(p)\in B_{\varepsilon}(p) \subseteq U$ and that $B_{\delta}(p) \subseteq f^{-1}(U)$. Since $p$ is any point of $f^{-1}(U)$, the set $f^{-1}(U)$ is open.
 
 **Corollary 4.1.2** $f: (E,d) \rightarrow (E',d')$ is continuous $\iff\forall C \subseteq E'$, $C$ closed, $f^{-1}(C)$ is closed.
 
