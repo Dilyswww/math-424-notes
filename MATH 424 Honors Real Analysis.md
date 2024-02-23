@@ -193,7 +193,7 @@ Remark: $[0,1) \in \mathbb{R}$ is neither closed nor open.
 >[!note] Theorem 3.2.1
 > Let $(E,d)$ be a metric space, then
 >1) $\forall$ collection $\{U_i\}_{i \in I}$ of open sets in $E$, $\cup_{i \in I}U_i$ is open.
->2) $\forall \:k$, $\forall$ open sets $U_1,...,U_k, \:U_1 \cup ...\cup U_k$ is open, i.e., **finite** union of open sets are open. 
+>2) $\forall \:k$, $\forall$ open sets $U_1,...,U_k, \:U_1 \cap ...\cap U_k$ is open, i.e., **finite** intersection of open sets are open. 
 >3) Open balls are open.
 
 Proof:
@@ -658,6 +658,9 @@ Proof:
 
 Pointwise limit of continuous functions need not be continuous.
 
+#todo reformat
+
+
 >[!note] Def (Uniform convergence)
 >$\{f_n:(E,d)\rightarrow (E',d')\}_{n=1}^{\infty}$a  sequence of functions between two metric spaces, $A \subseteq E$ a subspace. $f_n \rightarrow f$ uniformly on $A$ if $\forall \varepsilon > 0$, $\exists N$ s.t. $n\geq N \implies d'(f_n(p), f(p)) < \varepsilon, \forall p \in A$. 
 >Equivalently, $\forall \varepsilon > 0$, $\exists N$ s.t. $n \geq N \implies \sup\{d'(f_n(p),f(p))|p\in A\} < \varepsilon$. $\lim_{n\rightarrow \infty} \sup \{d'(f_n(p),f(p))|p\in A\} = 0$
@@ -668,7 +671,7 @@ Ex. $f_n(x) = \frac{nx}{1 + n^2x^2}, f_n: \mathbb{R}\rightarrow\mathbb{R}$. Sinc
 >[!note] Def (Uniformly Cauchy)
 >A sequence of functions $\{f_n: E \rightarrow E'\}_{n \in \mathbb{N}}$ is uniformly Cauchy on $A \subseteq E$ if $\forall \varepsilon > 0, \exists N$ with $n,m \geq N \implies \sup\{ d'(f_n(x),f_m(x))|x\in A\} < \varepsilon$
 
-**Theorem** Let $\{f_n: E \rightarrow E'\}_{n\in\mathbb{N}}, E'$ complete, then $\{f_n\}$ converges uniformly on $A$ $\iff \{f_n\}$ is uniformly Cauchy.
+**Theorem 4.3.1** Let $\{f_n: E \rightarrow E'\}_{n\in\mathbb{N}}, E'$ complete, then $\{f_n\}$ converges uniformly on $A$ $\iff \{f_n\}$ is uniformly Cauchy.
 Proof:
 	($\implies$) Suppose $f_n \rightarrow f$ uniformly on $A$. Then $\forall \varepsilon > 0, \exists N$ s.t. for $n\geq N$, $\sup\{d'(f_n(x),f(x))|x\in A\} < \varepsilon/3$. Then $\forall n,m \geq N$, $\forall x \in A$, $d'(f_n(x),f_m(x))\leq d'(f_n(x), f(x)) + d'(f_m(x),f(x)) < \varepsilon/3 + \varepsilon/3$, which suggests that $\sup\{d'(f_n(x),f_m(x))|x\in A\} \leq \frac{2}{3}\varepsilon < \varepsilon$.
 	($\impliedby$) Suppose $\{f_n\}$ is uniformly Cauchy on $A$. Then $\forall x \in A, \{f_n(x)\}$ is Cauchy. Since $E'$ is complete, we can define $f: A \rightarrow E'$ by $f(x) = \lim_{n\rightarrow\infty}f_n(x)$. We now argue: $f_n \rightarrow f$ is uniformly on $A$.  Recall that $\forall x \in E', h: E' \rightarrow [0,\infty), h(p) = d'(x,p)$ is continuous. Since $\{f_n\}$ is uniformly Cauchy on $A$, given $\varepsilon > 0, \exists N$ s.t. if $m,n \geq N$, then $\sup\{ d'(f_n(x),f_m(x))|x\in A\} < \varepsilon/2$. Fix $n \geq N$, then $d'(f_n(x), f(x)) = d'(f_n(x), \lim_{m \rightarrow \infty}f_m(x)) = \lim_{m \rightarrow \infty}d'(f_n(x),f_m(x)) \leq$$\sup_{m \geq n} d'(f_m(x), f_n(x))$$< \varepsilon$. Hence $\forall n \geq N, \sup\{d'(f_n(x), f(x))| x\ \in A\} \leq \varepsilon/2 < \varepsilon$.
@@ -683,8 +686,48 @@ Proof:
 >Notation: $C(E,E') = \{f: E\rightarrow E'| f\:bounded\:and\:continuous\}$
 
 Exercise. if $f,g: E\rightarrow E'$ are bounded, then $\{d'(f(x),g(x))| x\in E\}$ is bounded. Define $D: C(E,E')\times C(E,E')\rightarrow [0,\infty)$ by $D(f,g) = \sup\{d'(f(x),g(x))| x \in E\}$
-Exercise. $D$ is a metric. Then $f_n \rightarrow f$ in $(C(E,E'),D) \iff f_n \rightarrow f$ uniformly convergent.
+Exercise. $D$ is a metric. 
+Then $f_n \rightarrow f$ in $(C(E,E'),D) \iff f_n \rightarrow f$ uniformly convergent.
+ $\{f_n\}_{n\in\mathbb{N}}$ is Cauchy in $(C(E,E'),D) \iff \{f_n\}_{n\in\mathbb{N}}$ uniformly Cauchy.
 
+**Theorem** If $E'$ is a complete metric space, then $(C(E,E'),D)$ is complete.
+If $\{f_n\}_{n \in\mathbb{N}}$ is Cauchy in $C(E,E'),D$, then by Theorem 4.3.1 it is uniformly Cauchy. Then by 14.1 $\{f_n\}_{n\in\mathbb{N}}$ converges uniformly to $f: E\rightarrow E'$, since the convergence is uniform, $f$ is continuous. Moreover each $f_n$ is bounded and $f_n \rightarrow f$ uniformly, so $f$ is bounded (check that), so $f = \lim f_n \in C(E,E')$
+
+## 4. Connectedness revisited
+
+>[!note] Def (Connectedness)
+>A subset $Y$ of a topological space $X$ is connected if  $\forall U, V \subseteq X$, $U,V$ open with $Y \subseteq U \cup V$ and $(Y \cap U)\cup (Y \cap V) = \varnothing$. Either $Y \subseteq U$ or $Y \subseteq V$.
+
+In particular a space $X$ is connected if $X = U \cup V, U \cap V = \varnothing \implies X = U$ or $X = V$.
+
+Non Example: $Y=[0,1/2)\cup(1/2,1] \subseteq \mathbb{R}$, standard topology, $Y$ is not connected: $U = (-\infty, 1/2), V = (1/2,\infty)$. $U\cap V = \varnothing, Y = (Y \cap U) \cup (Y \cap V)$
+
+
+>Def (Subspace topology)
+>Suppose $(X, \mathcal{T})$ is a topological space, $Y \subseteq X$ is a subspace. A subspace topology $\mathcal{T}_Y$ on $Y$ is $\mathcal{T}_Y = \{U \cap Y | U\:open\:in\:X\}$
+>Exercise 1: $\mathcal{T}_Y$ is a topology
+>Exercise 2: If $d$ is a metric on $X$, and $d_Y = d|_{Y \times Y}$. Then $\mathcal{T}_{d_Y} = (\mathcal{T}_d)_Y$
+>
+>*Connect this with the definition of connectedness*
+
+
+**Theorem** $[0,1]$ with standard topology is connected.
+Proof:
+	Suppose $[0,1] = U \cup V, U, V\subseteq [0,1]$ open and $U \cap V = \varnothing$. We may assume that $0 \in U$. We argue that $V = \varnothing$. Let $S = \{x \in [0,1]\:|\:[0,x]\subseteq U\}$. Since $U$ is open, $0 \in U$, $\exists r > 0$ s.t. $[0,r) \subseteq U$. And then $[0,r/2]\subseteq U$. So $S$ is nonempty and contains some $x > 0$. Let $c = \sup S$. Then $c \leq 1$ and $c > 0$ since $\exists x > 0, x\in S$.
+	Claim 1: $[0,c) \subseteq U$. If $y \in [0,c)$, then $y < c = \sup S \implies \exists z$ s.t. $y \leq z < c \implies [0,z] \subseteq U\implies$ $[0,y] \subseteq [0,z] \subseteq U \implies y \in U$.
+	Claim 2: $c \in U$. If not, $c \in V$. Since $V$ is open, $\exists \delta > 0$ s.t. $(c-\delta, c+\delta) \cap [0,1] \subseteq V$. $\implies c - \delta/2 \in V$. But $c - \delta/2 < c$ and $[0,c) \subseteq U$. But $U \cap V = \varnothing$, contradiction. $\therefore [0,c) \cup \{c\} = [0,c] \subseteq U$ 
+	We now argue $c = 1$. If $c \neq 1, c < 1 \implies c \in (0,1)$. Since $(0,1), U$ are open, $(0,1) \cap U$ is open. $\exists \varepsilon > 0$ s.t. $(c-\varepsilon, c + \varepsilon) \subseteq (0,1) \cap U$. $[0,c+ \varepsilon) = [0,c] \cap (c-\varepsilon, c + \varepsilon)\subseteq U$. $\implies [0,c + \varepsilon/2] \subseteq U$, which contradicts that $c = \sup S$, $\therefore [0,1]$ is connected.
+
+**Theorem** Suppose $f: X \rightarrow Y$ is continuous, $X$ is connected, then $f(X) \subseteq Y$ is connected.
+Proof:
+	Suppose $U,V \subseteq Y$ are open, $f(X) \subseteq U \cup V$, $(f(X) \cap U) \cap (f(X) \cap V) = \varnothing$. We argue that either $f(X) \subseteq U$ or $f(X) \subseteq V$. Since $f(X) \subseteq U \cup V, X = f^{-1}(U)\cup f^{-1}(V)$ since $f$ is continuous. Since $(f(X) \cap U)\cap (f(X) \cap V) = \varnothing$, $f^{-1}(U) \cap f^{-1}(V) = \varnothing$. Since $X$ is connected, $X = f^{-1}(U)$. But then $f(X) \subseteq U$ (or $f(X) \subseteq V$). 
+
+**Corollary** $\forall a,b \in \mathbb{R}, a< b, [a,b]$ is connected.
+Proof:
+	$f(t) = ta+ (1-t)b, t \in [0,1]$ is a surjective continuous map $f:[0,1] \rightarrow [a,b]$. 
+
+>[!note] Def (Path-connected)
+>A space $X$ is path connected if $\forall p,q \in X$, $\exists$ a continuous function $\gamma: [0,1]\rightarrow X$ s.t. $\gamma(0) = p$,$\gamma(1) = q$.
 
 
 
