@@ -527,7 +527,7 @@ Proof:
 
 **Lemma 3.5.5** Suppose $(E,d)$ is a metric space and $K \subseteq E$ is compact, then $K$ is sequentially compact.
 Proof:
-	Let $\{S_n\}$ be a sequence in $K$. We argue that (1) $\exists x \in K$ s.t. $\forall \varepsilon > 0, \{n|s_n \in B_{\varepsilon}(x)\}$ is infinite, and this (1) implies that there is a subsequence #question  $\{S_{n_k}\}$ that converges to $x$. Take $\varepsilon = 1, 1/2,1/3\cdots$ and find $n_1<n_2<\cdots <n_k\cdots$ s.t. $S_{n_k} \in B_{1/n}(x)$. To see (1), suppose it is false. Then $\forall x \in K$, $\exists \varepsilon = \varepsilon(x)$ s.t. $\{n | s_n \in B_{\varepsilon(x)}(x)\}$ is finite. Then $\{B_{\varepsilon(x)}(x)\}_{x \in K}$ is an open cover of $K$. Since $K$ is compact, $\exists x_1,\cdots x_l \in K$ s.t. $K \subseteq B_{\varepsilon(x_1)}(x_1) \cap \cdots \cap B_{\varepsilon(x_l)}(x_l)$. But then $\{n| s_n\in B_{\varepsilon(x_1)}(x_1)\cup\cdots \cup B_{\varepsilon(x_l)}(x_l)\}$ is finite, a contradiction.
+	Let $\{S_n\}$ be a sequence in $K$. We argue that (1) $\exists x \in K$ s.t. $\forall \varepsilon > 0, \{n|s_n \in B_{\varepsilon}(x)\}$ is infinite, and this (1) implies that there is a subsequence #question  $\{S_{n_k}\}$ that converges to $x$ ==(there are infinite points around $x$, equivalent to $x$ is a cluster point)==. Take $\varepsilon = 1, 1/2,1/3\cdots$ and find $n_1<n_2<\cdots <n_k\cdots$ s.t. $S_{n_k} \in B_{1/n}(x)$. To see (1), suppose it is false. Then $\forall x \in K$, $\exists \varepsilon = \varepsilon(x)$ s.t. $\{n | s_n \in B_{\varepsilon(x)}(x)\}$ is finite. Then $\{B_{\varepsilon(x)}(x)\}_{x \in K}$ is an open cover of $K$. Since $K$ is compact, $\exists x_1,\cdots x_l \in K$ s.t. $K \subseteq B_{\varepsilon(x_1)}(x_1) \cap \cdots \cap B_{\varepsilon(x_l)}(x_l)$. But then $\{n| s_n\in B_{\varepsilon(x_1)}(x_1)\cup\cdots \cup B_{\varepsilon(x_l)}(x_l)\}$ is finite, a contradiction.
 
 
 >[!important] Def (Totally bounded)
@@ -535,7 +535,7 @@ Proof:
 
 **Lemma 3.5.6** Suppose $(E,d)$ is a metric space, $K \subseteq E$ sequentially compact. Then $(K,d)$ is complete and totally bounded.
 Proof: 
-	Suppose $\{S_n\} \in K$ is Cauchy. Since $K$ is sequentially compact, $\{S_n\}$ has a convergent subsequence and since $\{S_n\}$ is Cauchy, $\{S_n\}$ converges to $L=$ lim $S_{n_k}$ #question . Suppose $K$ is not totally bounded, then $\exists \varepsilon > 0$ s.t. $K$ cannot be covered by finitely many $\varepsilon$ balls $\implies$ $\exists x_1 \in K$ s.t. $K\setminus B_{\varepsilon}(x_1) \neq \varnothing$. Then $\exists x_2 \in K \setminus B_{\varepsilon}(x_1)$ s.t. $K \setminus (B_{\varepsilon}(x_1) \cup B_{\varepsilon}(x_2)) \neq \varnothing$.... $\exists x_n \in K \setminus (B_{\varepsilon}(x_1) \cup \cdots \cup B_{\varepsilon}(x_{n-1}))$ s.t. $K \setminus (B_{\varepsilon}(x_1) \cup \cdots \cup B_{\varepsilon}(x_{n-1}))\neq \varnothing$ (\*). We get a sequence $\{x_n\}$ in $K$ with $d(x_n,x_m) \geq \varepsilon$ for all $n \neq m$. Then $\{x_n\}$ has no Cauchy subsequence $\implies \{x_n\}$ has no convergent subsequences. This contradicts sequential compactness.
+	Suppose $\{S_n\} \in K$ is Cauchy. Since $K$ is sequentially compact, $\{S_n\}$ has a convergent subsequence and since $\{S_n\}$ is Cauchy, $\{S_n\}$ converges to $L=$ lim $S_{n_k}$(See Lemma 3.4.3). Suppose $K$ is not totally bounded, then $\exists \varepsilon > 0$ s.t. $K$ cannot be covered by finitely many $\varepsilon$ balls $\implies$ $\exists x_1 \in K$ s.t. $K\setminus B_{\varepsilon}(x_1) \neq \varnothing$. Then $\exists x_2 \in K \setminus B_{\varepsilon}(x_1)$ s.t. $K \setminus (B_{\varepsilon}(x_1) \cup B_{\varepsilon}(x_2)) \neq \varnothing$.... $\exists x_n \in K \setminus (B_{\varepsilon}(x_1) \cup \cdots \cup B_{\varepsilon}(x_{n-1}))$ s.t. $K \setminus (B_{\varepsilon}(x_1) \cup \cdots \cup B_{\varepsilon}(x_{n-1}))\neq \varnothing$ (\*). We get a sequence $\{x_n\}$ in $K$ with $d(x_n,x_m) \geq \varepsilon$ for all $n \neq m$. Then $\{x_n\}$ has no Cauchy subsequence $\implies \{x_n\}$ has no convergent subsequences. This contradicts sequential compactness.
 	\*: This is a recursive definition, $\{x_n\}$ is infinite.
 
 **Lemma 3.5.7** Let $(E,d)$ be a metric space, $K \subseteq E$ complete and totally bounded, then $K$ is compact. 
@@ -578,7 +578,6 @@ Proof:
 	($\implies$) Suppose $f$ is continuous, $U \subseteq E'$ open, then $\forall p \in f^{-1}(U)$, $f(p) \in U \implies \exists \varepsilon > 0$ s.t. $B_{\varepsilon}(f(p))\subseteq U$. Since $f$ is continuous at $p$, $\exists \delta > 0$ s.t. $f(B_{\delta}(p))\subseteq B_{\varepsilon}(f(p))$, which implies that $f(B_{\delta}(p))\subseteq U$, and thus $B_{\delta}(p)\subseteq f^{-1}(U)$. Since $p \in f^{-1}(U$) is arbitrary, $f^{-1}(U)$ is open.
 	($\impliedby$) Suppose $\forall U \subseteq E', U$ open, $f^{-1}(U)$ is open. Given $p \in E$ and $\varepsilon > 0$, $B_{\varepsilon}(f(p))$ is open in $E$. Since $p \in f^{-1}(f(p))\subseteq f^{-1}(B_{\varepsilon}(f(p)))$ and $f^{-1}(B_{\varepsilon}(f(p)))$ is open, $\exists \delta > 0$ s.t. $f(B_{\delta}(p))\subseteq B_{\varepsilon}(f(p))$ and $f$ is continuous at $p$. 
 
-
 **Corollary 4.1.2** $f: (E,d) \rightarrow (E',d')$ is continuous $\iff\forall C \subseteq E'$, $C$ closed, $f^{-1}(C)$ is closed.
 
 >[!note] Def (Continuous function )
@@ -615,12 +614,12 @@ Ex. $S = \{0\} \cup [1,2] \subseteq \mathbb{R}$, $d(x,y) = |x-y|$. 0 is not a cl
 Remarks. 
 (1) $p\in A$ is not necessary. i.e., $f(p)$ need not be defined.
 (2) Even if $p \in A$ we are requiring $f(p) =\lim_{x\rightarrow p}f(x)$
-Ex. $f:\mathbb{R}\rightarrow \mathbb{R}, f(x) = 1, x=0,f(x) = 0, o.w.$ Then $\lim_{x \in \rightarrow 0} f(x)= 0 \neq 1 = f(0)$.
+Ex. $f:\mathbb{R}\rightarrow \mathbb{R}, f(x) = 1, x=0,f(x) = 0, o.w.$ Then $\lim_{x \rightarrow 0} f(x)= 0 \neq 1 = f(0)$.
 
 **Lemma 4.2.1** $E,E'$ metric spaces, $p$ cluster point of $E$. Then $f: E \rightarrow E'$ is continuous at $p \iff$ $\lim_{x \rightarrow p} f(x) = f(p)$.
 Proof:
 	#TODO 
-	Note that if $p$ is not a cluster point, then $\exists r$ s.t. $B_r(p)\setminus \{p\}\cap E = \varnothing$. i.e. $B_r(p) = \{p\}$. And then any $f: E \rightarrow E'$ is continuous at $p$. 
+	Note that if $p$ is not a cluster point, then $\exists\: r$ s.t. $B_r(p)\setminus \{p\}\cap E = \varnothing$. i.e. $B_r(p) = \{p\}$. And then any $f: E \rightarrow E'$ is continuous at $p$. 
 
 **Theorem 4.2.2** $E,E'$ metric spaces, $f: E \rightarrow E'$ is continuous at $p \in E$ $\iff \forall$ sequences $\{S_n\} \in E$ with $S_n \rightarrow p$, we have $f(s_n) \rightarrow f(p)$.
 Proof:
@@ -658,9 +657,6 @@ Proof:
 
 Pointwise limit of continuous functions need not be continuous.
 
-#todo reformat
-
-
 >[!note] Def (Uniform convergence)
 >$\{f_n:(E,d)\rightarrow (E',d')\}_{n=1}^{\infty}$a  sequence of functions between two metric spaces, $A \subseteq E$ a subspace. $f_n \rightarrow f$ uniformly on $A$ if $\forall \varepsilon > 0$, $\exists N$ s.t. $n\geq N \implies d'(f_n(p), f(p)) < \varepsilon, \forall p \in A$. 
 >Equivalently, $\forall \varepsilon > 0$, $\exists N$ s.t. $n \geq N \implies \sup\{d'(f_n(p),f(p))|p\in A\} < \varepsilon$. $\lim_{n\rightarrow \infty} \sup \{d'(f_n(p),f(p))|p\in A\} = 0$
@@ -676,16 +672,17 @@ Proof:
 	($\implies$) Suppose $f_n \rightarrow f$ uniformly on $A$. Then $\forall \varepsilon > 0, \exists N$ s.t. for $n\geq N$, $\sup\{d'(f_n(x),f(x))|x\in A\} < \varepsilon/3$. Then $\forall n,m \geq N$, $\forall x \in A$, $d'(f_n(x),f_m(x))\leq d'(f_n(x), f(x)) + d'(f_m(x),f(x)) < \varepsilon/3 + \varepsilon/3$, which suggests that $\sup\{d'(f_n(x),f_m(x))|x\in A\} \leq \frac{2}{3}\varepsilon < \varepsilon$.
 	($\impliedby$) Suppose $\{f_n\}$ is uniformly Cauchy on $A$. Then $\forall x \in A, \{f_n(x)\}$ is Cauchy. Since $E'$ is complete, we can define $f: A \rightarrow E'$ by $f(x) = \lim_{n\rightarrow\infty}f_n(x)$. We now argue: $f_n \rightarrow f$ is uniformly on $A$.  Recall that $\forall x \in E', h: E' \rightarrow [0,\infty), h(p) = d'(x,p)$ is continuous. Since $\{f_n\}$ is uniformly Cauchy on $A$, given $\varepsilon > 0, \exists N$ s.t. if $m,n \geq N$, then $\sup\{ d'(f_n(x),f_m(x))|x\in A\} < \varepsilon/2$. Fix $n \geq N$, then $d'(f_n(x), f(x)) = d'(f_n(x), \lim_{m \rightarrow \infty}f_m(x)) = \lim_{m \rightarrow \infty}d'(f_n(x),f_m(x)) \leq$$\sup_{m \geq n} d'(f_m(x), f_n(x))$$< \varepsilon$. Hence $\forall n \geq N, \sup\{d'(f_n(x), f(x))| x\ \in A\} \leq \varepsilon/2 < \varepsilon$.
 
-**Theorem** Uniform limit of continuous functions is continuous.
+**Theorem 4.3.2** Uniform limit of continuous functions is continuous.
 Proof:
 	Suppose $\{f_n: E \rightarrow E'\}$ converges uniformly on all of $E$. Fix $p \in E$, we prove that $f$ is continuous on $p$. For $\forall x \in E, \forall n \in \mathbb{N}$, $d'(f(p), f(x))\leq d'(f(p), f_n(p)) + d'(f_n(p),f_n(x)) + d'(f_n(x), f(x))$.  Given $\varepsilon > 0$, we want to show: $\exists \delta > 0$ s.t. if $d(x,p) < \delta$, then $d'(f(x),f(p)) < \varepsilon$. Since $f_n \rightarrow f$ converges uniformly, $\exists N$ s.t. for $n \geq N$, $d'(f_n(y), f(y)) < \varepsilon /3, \forall y \in E$. Since $f_N$ is continuous at $p$, $\exists \delta > 0$ s.t. if $d(x,p) < 0, d'(f_N(x),f_N(p)) < \varepsilon/3$. Then $\forall x$ with $d(x,p) < \delta$,
 	$d'(f(p), f(x))\leq d'(f(p), f_n(p)) + d'(f_n(p),f_n(x)) + d'(f_n(x), f(x)) < \varepsilon/3+\varepsilon/3+\varepsilon/3 = \varepsilon$
 
 >[!note] Def (Bounded function)
 >Let $(E,d), (E',d')$ be two metric spaces, a function $f: E \rightarrow E'$ is bounded if $f(E) \subseteq E'$ is bounded.
->Notation: $C(E,E') = \{f: E\rightarrow E'| f\:bounded\:and\:continuous\}$
+>Notation: $C(E,E') = \{f: E\rightarrow E'| f\:\text{bounded\:and\:continuous}\}$
 
-Exercise. if $f,g: E\rightarrow E'$ are bounded, then $\{d'(f(x),g(x))| x\in E\}$ is bounded. Define $D: C(E,E')\times C(E,E')\rightarrow [0,\infty)$ by $D(f,g) = \sup\{d'(f(x),g(x))| x \in E\}$
+Exercise. if $f,g: E\rightarrow E'$ are bounded, then $\{d'(f(x),g(x))| x\in E\}$ is bounded. 
+Define $D: C(E,E')\times C(E,E')\rightarrow [0,\infty)$ by $D(f,g) = \sup\{d'(f(x),g(x))| x \in E\}$
 Exercise. $D$ is a metric. 
 Then $f_n \rightarrow f$ in $(C(E,E'),D) \iff f_n \rightarrow f$ uniformly convergent.
  $\{f_n\}_{n\in\mathbb{N}}$ is Cauchy in $(C(E,E'),D) \iff \{f_n\}_{n\in\mathbb{N}}$ uniformly Cauchy.
@@ -693,10 +690,10 @@ Then $f_n \rightarrow f$ in $(C(E,E'),D) \iff f_n \rightarrow f$ uniformly conve
 **Theorem** If $E'$ is a complete metric space, then $(C(E,E'),D)$ is complete.
 If $\{f_n\}_{n \in\mathbb{N}}$ is Cauchy in $C(E,E'),D$, then by Theorem 4.3.1 it is uniformly Cauchy. Then by 14.1 $\{f_n\}_{n\in\mathbb{N}}$ converges uniformly to $f: E\rightarrow E'$, since the convergence is uniform, $f$ is continuous. Moreover each $f_n$ is bounded and $f_n \rightarrow f$ uniformly, so $f$ is bounded (check that), so $f = \lim f_n \in C(E,E')$
 
-## 4. Connectedness revisited
+## 4.3 Connectedness revisited
 
 >[!note] Def (Connectedness)
->A subset $Y$ of a topological space $X$ is connected if  $\forall U, V \subseteq X$, $U,V$ open with $Y \subseteq U \cup V$ and $(Y \cap U)\cup (Y \cap V) = \varnothing$. Either $Y \subseteq U$ or $Y \subseteq V$.
+>A subset $Y$ of a topological space $X$ is connected if  $\forall U, V \subseteq X$, $U,V$ open with $Y \subseteq U \cup V$ and $(Y \cap U)\cap (Y \cap V) = \varnothing$. Either $Y \subseteq U$ or $Y \subseteq V$.
 
 In particular a space $X$ is connected if $X = U \cup V, U \cap V = \varnothing \implies X = U$ or $X = V$.
 
@@ -704,7 +701,7 @@ Non Example: $Y=[0,1/2)\cup(1/2,1] \subseteq \mathbb{R}$, standard topology, $Y$
 
 
 >Def (Subspace topology)
->Suppose $(X, \mathcal{T})$ is a topological space, $Y \subseteq X$ is a subspace. A subspace topology $\mathcal{T}_Y$ on $Y$ is $\mathcal{T}_Y = \{U \cap Y | U\:open\:in\:X\}$
+>Suppose $(X, \mathcal{T})$ is a topological space, $Y \subseteq X$ is a subspace. A subspace topology $\mathcal{T}_Y$ on $Y$ is $\mathcal{T}_Y = \{U \cap Y | U\text{\:open\:in}\:X\}$
 >Exercise 1: $\mathcal{T}_Y$ is a topology
 >Exercise 2: If $d$ is a metric on $X$, and $d_Y = d|_{Y \times Y}$. Then $\mathcal{T}_{d_Y} = (\mathcal{T}_d)_Y$
 >
@@ -718,24 +715,336 @@ Proof:
 	Claim 2: $c \in U$. If not, $c \in V$. Since $V$ is open, $\exists \delta > 0$ s.t. $(c-\delta, c+\delta) \cap [0,1] \subseteq V$. $\implies c - \delta/2 \in V$. But $c - \delta/2 < c$ and $[0,c) \subseteq U$. But $U \cap V = \varnothing$, contradiction. $\therefore [0,c) \cup \{c\} = [0,c] \subseteq U$ 
 	We now argue $c = 1$. If $c \neq 1, c < 1 \implies c \in (0,1)$. Since $(0,1), U$ are open, $(0,1) \cap U$ is open. $\exists \varepsilon > 0$ s.t. $(c-\varepsilon, c + \varepsilon) \subseteq (0,1) \cap U$. $[0,c+ \varepsilon) = [0,c] \cap (c-\varepsilon, c + \varepsilon)\subseteq U$. $\implies [0,c + \varepsilon/2] \subseteq U$, which contradicts that $c = \sup S$, $\therefore [0,1]$ is connected.
 
-**Theorem** Suppose $f: X \rightarrow Y$ is continuous, $X$ is connected, then $f(X) \subseteq Y$ is connected.
+## 4.5 Continuous functions on a connected metric space
+**Theorem 4.5.1** Suppose $f: X \rightarrow Y$ is continuous, $X$ is connected, then $f(X) \subseteq Y$ is connected.
 Proof:
 	Suppose $U,V \subseteq Y$ are open, $f(X) \subseteq U \cup V$, $(f(X) \cap U) \cap (f(X) \cap V) = \varnothing$. We argue that either $f(X) \subseteq U$ or $f(X) \subseteq V$. Since $f(X) \subseteq U \cup V, X = f^{-1}(U)\cup f^{-1}(V)$ since $f$ is continuous. Since $(f(X) \cap U)\cap (f(X) \cap V) = \varnothing$, $f^{-1}(U) \cap f^{-1}(V) = \varnothing$. Since $X$ is connected, $X = f^{-1}(U)$. But then $f(X) \subseteq U$ (or $f(X) \subseteq V$). 
 
-**Corollary** $\forall a,b \in \mathbb{R}, a< b, [a,b]$ is connected.
+**Corollary 4.5.2** $\forall a,b \in \mathbb{R}, a< b, [a,b]$ is connected.
 Proof:
 	$f(t) = ta+ (1-t)b, t \in [0,1]$ is a surjective continuous map $f:[0,1] \rightarrow [a,b]$. 
 
 >[!note] Def (Path-connected)
 >A space $X$ is path connected if $\forall p,q \in X$, $\exists$ a continuous function $\gamma: [0,1]\rightarrow X$ s.t. $\gamma(0) = p$,$\gamma(1) = q$.
+In this case, we say $\gamma$ is a path from $p$ to $q$.
 
+Ex. $\mathbb{R}^n$ is path-connected. $\forall p,q \in \mathbb{R}^n$, $\gamma(t) = tp + (1-t)q$ is a continuous path from $p$ to $q$.
 
+>[!note] Def (Convex)
+>A subset $X \subseteq \mathbb{R}^n$ is convex if $\forall p, q\in X$, $tp + (1-t)q \in X, \forall t \in [0,1]$
+
+Remark. Convex sets are path connected. In particular, closed and open balls in $\mathbb{R}^n$ (w.r.t. $d_1,d_2,d_{\infty}$) are all convex, and thus path-connected.
+Ex. $X = \{(x,y) \in \mathbb{R}^2: xy \geq 0\}$ is path connected but not convex. 
+
+**Theorem 4.5.2** Path connected $\implies$ connected
+Proof:
+	Suppose $X$ is path-connected, $U,V \subseteq X$ open, $U \cup V = X$. $U \cap V \neq \varnothing$. Suppose by contradiction that both $U \neq \varnothing$ and $V \neq \varnothing$. Then $\exists \gamma : [0,1]\rightarrow X$ s.t. $\gamma (0) \in U, \gamma(1) \in V$. But then $[0,1] = \gamma^{-1}(U\cup V) = U ^{-1} \cup V^{-1}$, and thus $0 \in \gamma^{-1}(U), 1 \in \gamma^{-1}(V)$ and $\gamma^{-1}(U) \cap \gamma^{-1}(V) = \varnothing$. This contradicts the connectedness of $[0,1]$. 
+
+**Lemma 4.5.3** For $Y \subseteq\mathbb{R}$, $Y$ is connected $\iff Y$ is convex: $\forall y_1,y_2 \in Y, y_1 \neq y_2, [y_1,y_2]\in Y$. (Hence for $Y \subseteq \mathbb{R}$, connected $\iff$ path connected) 
+Proof:
+	($\impliedby$) If $y_1,y_2 \in Y, [y_1,y_2] \subseteq Y$, then $Y$ is path connected hence connected.
+	($\implies$) Suppose $Y$ is connected, and $\exists y_1,y_2 \in Y$ with $[y_1,y_2] \not\subseteq Y$. Then $\exists z \in [y_1,y_2]$ s.t. $z \notin Y \implies Y \subseteq (-\infty, z) \cup (z, \infty)$ and $y_1 \in (-\infty, z) \cap Y$, $y_q \in(z, \infty) \cup Y$, but this contradicts connectedness.
+
+**Theorem 4.5.4 (Intermediate Value Theorem)**  Suppose $X$ is connected, $f: X \rightarrow \mathbb{R}$ is continuous. Then $\forall y_1,y_2 \in f(x)$ with $y_1 < y_2, [y_1,y_2] \subseteq f(X)$. In particular, $\forall y \in \mathbb{R}$ with $y_1 < y < y_2$, $\exists x \in X$ s.t. $f(x) = y$
+Proof: 
+	Since $f$ is continuous and $X$ is connected, $f(X) \subseteq \mathbb{R}$ is connected. Now apply Lemma 4.5.3.
+
+Ex. Suppose $f:[0,1]\rightarrow [0,1]$, then $f$ has a fixed point: $\exists x \in [0,1]$ s.t. $f(x) = x$.
+Proof: Consider $g(x) = f(x) - x$. $g(0) = f(0) \in [0,1]\implies f(x) \geq 0$. $g(1) = f(1) - 1 \leq 0$. Since $g$ is continuous and $[0,1]$ is connected, $\exists x \in [0,1]$ s.t. $0 = g(0) = f(x) - x$.
+
+Ex of $A \subset \mathbb{R}$ which is connected but not path-connected: Let $B = \{(x,\sin\frac{1}{x}) | x > 0\}$. Since $f:[0,\infty) \rightarrow B, f(x) = (x, \sin\frac{1}{x})$ is continuous and surjective, $B$ is path-connected. Let $A = (\{0\}\times [-1,1]) \cup B$ (secretly $A = \bar{B}$ the closure of $B$)
+Proof: 
+	Claim 1: A is connected
+	Suppose not, then $\exists U_1,U_2 \subseteq \mathbb{R}^2$ open sets, s.t. $A \subseteq U_1 \cup U_2, (A \cap U_1) \cap (A \cap U_2) = \varnothing$, and $A \cap U_1, A \cap U_2 \neq \varnothing$. Since #TODO ==lecture notes 16==
+
+**Theorem 4.5.5** If $U \subseteq \mathbb{R}$ is connected and open, then $U$ is path-connected.
+Proof:
+	Define $\sim$ on $U$ by $x \sim y \iff x,y$ can be connected by a path. We check that it is an equivalence relation. Then equivalence classes of $\sim$ are disjoint.
+	Claim: Any equivalence classes $V$ of $\sim$ is open.
+		Proof: given $x\in V, \exists r > 0$ s.t. $B_r(x) \subseteq U$. But any point $y \in B_r(x)$ can be connected to $x$ by a path $\implies B_r(x) \subseteq V\implies V$ is open. Since $U$ is connected, there can only be one equivalence class, so $U$ is path-connected.
 
 # Chapter 5 Differentiation
+## 5.1 Derivative
+>[!note] Def (Differential)
+>Let $U \subseteq \mathbb{R}$ open, $f: U \rightarrow \mathbb{R}, f$ is differentiable at $a \in U$ ($f$ has a derivative at $a$) if $\lim _{x\rightarrow a} \frac{f(x)-f(a)}{x-a}$ exists.
+>If $f$ is differentiable at $a$, we write $f'(a)$ or $\frac{\text{d}f}{\text{d}x}(a)$
 
+Ex. $U = \mathbb{R}, f(x) = x$. Then $\lim_{x \rightarrow a} \frac{f(x)-f(a)}{x-a} = \frac{x-a}{x-a} = 1$, thus $f(x)$ is differentiable.
+Ex. Same $U, f(x) = c, c$ constant is differentiable.
+Ex. $U = \{x\in\mathbb{R}: x \neq 0\}, f(x) = 1/x$. Then for all $a \in U, \lim_{x \rightarrow a} \frac{f(x)-f(a)}{x-a} = \frac{1}{x-a} (\frac{1}{x} - \frac{1}{a}) = -\frac{1}{a^2}$
+
+Note: $\forall u,v \in\mathbb{R}, n \in \mathbb{N}, u^n - v^n = (u-v) (u^{n-1} + u^{n-2}v+ \cdots+ uv^{n-2} + v^{n-1})$  
+
+Ex. $U = (0,\infty), f(x) = x^{1/n}, n\in\mathbb{N}$, $f'(a) = \lim_{x \rightarrow a} \frac{f(x)-f(a)}{x-a} = \frac{1}{x-a}(x^{1/n} - a^{1/n}) =  \frac{x^{1/n} - a^{1/n}}{x^{1/n} - a^{1/n}(x^{{n-1}/n} + x^{{n-2}/n}a^{1/n} + \cdots)} = \lim_{x\rightarrow a} \sum_{k=1}^{n-1}(x^{\frac{n-1-k}{n}}a^{k/n})^{-1}$ $= n(a^{\frac{n-1}{n}})^{-1} = \frac{1}{n}a^{1/n-1}$ 
+
+Equivalence expression of $f(x)$ is differentiable at $a$:
+1) $\lim_{h\rightarrow 0} \frac{f(a+h) - f(a)}{h}$ exists.
+2) $\exists f'(a) \in\mathbb{R}$ s.t. $\lim_{x \rightarrow a} = \frac{f(x) - f(a) - f'(a)(x-a)}{x-a}=0$
+
+**Lemma 5.1.1** If $f: U \rightarrow \mathbb{R}$ is differentiable at $a$, then it is continuous at $a$.
+Proof:
+	Suppose $f'(a) = \lim_{x \rightarrow a} \frac{f(x)-f(a)}{x-a}$ exists, then $\lim_{x\rightarrow a} f(x) = \lim_{x\rightarrow a}f(a) + \frac{f(x)-f(a)}{x-a}(x-a)= f(a) + \lim_{x\rightarrow a}\frac{f(x)-f(a)}{x-a} \cdot \lim_{x\rightarrow a}(x-a)$ 
+	$=f(a) + 0\cdot f'(a) = f(a)$
+
+**Lemma 5.1.2** Suppose $f$ is differentiable at $a$ and $g$ is differentiable at $f(a)$, then $g\circ f$ is differentiable at $a$ and $(g\circ f)'(a) = g'(f(a))\cdot f'(a)$
+Proof:
+	Define $h(y) = \begin{cases}\frac{g(y) - g(f(a))}{y-f(a)},y\neq f(a)\\	g'(f(a)), \:\:\:\:y = f(a)\end{cases}$
+	Then $h$ is continuous at $a$ since $\lim_{y\rightarrow f(a)}h(y) = g'(f(a))$. Moreover, $\lim_{x\rightarrow a}\frac{g(f(x)) = g(f(a))}{x-a} = \lim_{x\rightarrow a} h(f(x))\cdot \frac{f(x)-f(a)}{x-a} = h(f(a))\cdot f'(a) = g(f(a))\cdot f'(a)$
+
+**Lemma 5.1.3** Suppose $f(a) \neq 0$ and $f$ is differentiable at $a$, then $k(x) = \frac{1}{f(x)}$ is differentiable at $a$ and $k'(a) = -\frac{1}{(f(a))^2}f'(a)$
+Proof:
+	$k(x) = (g\circ f)(x)$ where $g(y) = \frac{1}{y}$
+
+## 5.2 Rules of Differentiation
+**Theorem 5.2.1 Suppose $f,g$ are differentiable at $a$ and $c\in\mathbb{R}$ a constant, then $f+g,f\cdot g,cf$ are differentiable at $a$. If $g(a) \neq 0, f/g$ is also differentiable at $a$. Moreover,
+1) $(cf)'(a) = cf'(a)$
+2) $(f+g)'(a) = f'(a) + g'(a)$
+3) $(f\cdot g)'(a) = f'(a)g(a) + f(a)g'(a)$
+4) $(f/g)'(a) = \frac{f'(a)g(a) - f(a)g'(a)}{(g(a))^2}$ if $g(a) \neq 0$.
+Proof:
+	Since $c=0$, (3)$\implies$ (1); (3) + 5.1.3 $\implies$ 4) since $f/g=f\cdot \frac{1}{g}$.
+	(2) $(f+g)'(a) =\lim_{x\rightarrow a}\frac{(f+g)(x) - (f+g)(a)}{x-a} = \lim_{x\rightarrow a}(\frac{f(x) - f(a)}{x-a} + \frac{g(x) - g(a)}{x-a}) = f'(a) + g'(a)$
+	(3) $(f\cdot g)'(a) = \lim_{x\rightarrow a}\frac{f(x)g(x) -f(x)g(a) + f(x)g(a) - f(a)g(a) }{x-a} = \lim_{x\rightarrow a}f(x) \frac{g(x) - g(a)}{x-a} + g(x) \frac{f(x) - f(a)}{x-a}$ 
+	$= f(a) g'(a) + f'(a)g(a)$
+
+**Theorem 5.2.2** Suppose $f$ is differentiable at $a$ and $f$ achieves an extremum at $a$, then $f'(a) = 0$
+Proof:
+	We prove the theorem when $a$ is a local maximum. Then $\exists \varepsilon>0$ s.t. for $x \in (a-\varepsilon,a+\varepsilon)$, i) if $x\in(a-\varepsilon, a), \frac{f(x)-f(a)}{x-a}\geq 0$, ii) for $x\in(a, a+\varepsilon), \frac{f(x)-f(a)}{x-a}\leq 0$. ii) implies that $\lim_{x\nearrow a}\frac{f(x)-f(a)}{x-a}\geq 0$ and $\lim_{x\searrow a}\frac{f(x)-f(a)}{x-a}\leq 0$ . But $\lim_{x\rightarrow a}\frac{f(x)-f(a)}{x-a}$ exists and equals $f'(a)$, thus $f'(a) \geq 0, f'(a) \leq 0$, so $f'(a) = 0$.
+
+## 5.3 Mean Value Theorem
+
+>[!important] Theorem (Rolle's Theorem)
+>$f:[a,b]\rightarrow\mathbb{R}$ continuous differentiable on $(a,b)$, $f(a) = f(b)$. Then $\exists c \in (a,b)$ so that that $f'(c) = 0$
+
+Proof:
+	Since $[a,b]$ is compact, $f$ achieves max and min on $[a,b]$ if a point $c \in (a,b)$ is extremal, we are done. Otherwise, the external points are in $\{a,b\}$ and then $f$ is constant, hence $f'(c) = 0, \forall c\in (a,b)$
+
+>[!important] Theorem (Mean Value Theorem)
+>Suppose $f:[a,b] \rightarrow \mathbb{R}$ is continuous, differentiable on $(a,b)$. Then $\exists c \in (a,b)$ s.t. 
+>$$f'(c) = \frac{f(b) - f(a)}{b-a}$$
+
+Note: This is Rolle's theorem if $f(a) = f(b)$
+Proof of MVP:
+	Let $h(x) = \frac{f(b)- f(a)}{b-a}\cdot (x-a)$. Note: $h'(x) = \frac{f(b)-f(a)}{b-a}, \forall x$. Let $g(x) = f(x) - h(x)$. then $g(a) = f(a) - h(a) = f(a)$. $g(b) = f(b) - \frac{f(b) - f(a)}{b-a}\cdot (b-a) = f(a)$. By Rolle's Theorem applied to $g(x)$ we get: $\exists c \in (a,b)$ so that $0 = g'(c)$. But $g'(c) = f'(c) - h'(c) = f'(c) - \frac{f(b) - f(a)}{b-a}$. Thus $\exists c \in (a,b)$ s.t. $f'(c) = \frac{f(b) - f(a)}{b-a}$. 
+
+**Corollary 5.3.1** Suppose $f: (a,b) \rightarrow \mathbb{R}$ is differentiable and $f'(x)= 0, \forall x \in (a,b)$. Then $f$ is constant.
+Proof:
+	If $f$ is not constant, $\exists x_1,x_2 \in (a,b), x_1 < x_2$ s.t. $f(x_1) \neq f(x_2)$. By Mean Value Theorem $\exists c\in (a,b)$ s.t. $f'(c) = \frac{f(x_2)-f(x_1)}{x_2-x_1} \neq 0$. Contradiction.
+
+**Corollary 5.3.2** Let $f,g: (a,b)\rightarrow \mathbb{R}$ differentiable, $f'(x) = g'(x), \forall x$. Then $\exists c \in \mathbb{R}$ s.t. $f(x) = g(x) + c$
+Proof:
+	$(f-g)'(x) = f'(x) - g'(x) = 0$. By 5.3.1, $h(x) = f(x) - g(x)$ is constant.
+
+Ex. Suppose $f: \mathbb{R} \rightarrow \mathbb{R}$ is a function, suppose $\exists \alpha >1$ s.t. $|f(x) - f(y) \leq |x-y|^{\alpha}$ for all $x,y \in\mathbb{R}$. Then $f$ is constant.
+Proof: 
+	It's enough to prove that $f$ is differentiable and that $f'(a)=0, \forall a$. So fix $a \in\mathbb{R}, \forall x \neq a$ $|\frac{f(x) - f(a)}{x-a}-0| = \frac{|f(x) - f(a)}{|x-a|}\leq |x-a|^{\alpha - 1}$. Given $\varepsilon > 0$, let $\delta - \varepsilon^{1/(\alpha-1)}$. Then, for $x\neq a$, $|x-a| < \delta \implies\varepsilon^{\alpha - 1} > |x-a|^{\alpha - 1} \geq |\frac{f(x) - f(a)}{x-a} - 0|$. $\therefore \lim_{x\rightarrow a}\frac{f(x) - f(a)}{x-a} = 0$
+
+**Lemma 5.3.3** Suppose $f:(a,b)\rightarrow \mathbb{R}$ is differentiable and $f'(x)$ is bounded. then $f$ is uniformly continuous.
+Proof:
+	Let $M$ be an upper bound for $\{|f'(x)|: x \in (a,b)\}$. By the Mean Value Theorem, $\forall x, y\in(a,b), x< y, \exists c\in (x,y)$ s.t. $\frac{f(y)-f(x)}{y-x} = f'(c) \implies \frac{|f(y)-f(x)|}{|y-x|} = |f'(c)| \leq M$ 
+	$\implies |f(y) - f(x)| \leq M|y-x|$. Hence given $\varepsilon >0$, let $\delta = \varepsilon/M$, then $|y-x| < \varepsilon/M \implies |f(y) - f(x)| \leq <M|y-x| < M\cdot \varepsilon/M = \varepsilon$
+
+Remark. $f(x) = \sqrt{x}$ is continuous on $[0,1]$ hence uniformly continuous on $[0,1]$ since $[0,1]$ is compact. Hence it's uniformly bounded on $(0,1)$, but $f(x) = 1/(2\sqrt{x})$ is not bounded on $(0,1)$
+
+**Theorem 5.3.4** Suppose $f:(a,b)\rightarrow \mathbb{R}$ is differentiable on $(a,b)$, then:
+1) $f'(x) > 0, \forall x\implies f$ is strictly increasing
+2) $f'(x) < 0, \forall x\implies f$ is strictly decreasing
+3) $f'(x) \geq 0, \forall x\iff f$ is nondecreasing
+4) $f'(x) \leq 0, \forall x\iff f$ is non increasing
+Proof of (3):
+	($\implies$) Suppose $f'(z) \geq 0,  \forall z \in (a,b),x,y\in(a,b),x<y$, then $\exists c\in(x,y)$ s.t. $\frac{f(y)-f(x)}{y-x} = f'(c)\geq 0$ $\implies f(y) - f(x) = (y-x)f'(c) \geq 0$
+	($\impliedby$) If $f$ is nondecreasing then $\forall x<y, \frac{f(y)-f(x)}{y-x}\geq 0 \implies f'(y)\geq 0, \forall y$.  
+Remark. strictly increasing $\not\implies f'(x) > 0$ 
+
+>[!note] Theorem (Inverse Function Theorem)
+>Suppose $f:(a,b)\rightarrow(c,b)$ is a continuous bijection, $x_0\in(a,b)$, $f$ is differentiable at $x_0$ and $f'(x_0)\neq 0$. Then $f^{-1}:(c,d)\rightarrow (a, b)$ is differentiable at $y_0 = f(x_0)$ and
+>$$(f^{-1})'(y_0) \cdot f'(x_0) = 1, (\text{i.e.} (f^{-1})'(y_0) = \frac{1}{f'(x_0)})$$
+
+Remark. the content of the theorem is that $f^{-1}$ is differentiable at $y_0$. the formula then follows from $f^{-1}(f(x)) = x$ (chain rule) $\implies (f^{-1})'(f(x_0))\cdot f'(x_0) = 1$
+To prove the Inverse Function Theorem we will need to know that $f^{-1}$ is a continuous at all points of $(c,d)$
+
+**Lemma 5.3.5** Let $(S,d), (S',d')$ be metric spaces, $S$ compact, $f:S \rightarrow S'$ continuous bijection. Then $f^{-1}: S'\rightarrow S$ is continuous. 
+proof:
+	$g:=f^{-1}$ is continuous $\iff \forall$ closed sets $C \subseteq S, g^{-1}(C)$ is closed. Now, since $g = f^{-1}, g^{-1}(C) = f(C)$. Since $C\subseteq S$ is closed, $C$ is compact. $f$ continuous $\implies f(C)$ is compact. But $S'$ is a metric space, so $f(C)$ is closed. #question $\therefore g=f^{-1}$ is continuous.
+
+proof of IVT:
+	We first argue that $f^{-1}$ is continuous*. Given $y_0 \in (c,d), x_0 = f^{-1}(y_0) \in (a,b)\implies \exists \varepsilon >0$ s.t. $[x_0-\varepsilon, x_0+\varepsilon] \subseteq (a,b)$. Since $[x_0-\varepsilon, x_0+\varepsilon]$ is compact, $f:[x_0-\varepsilon, x_0+\varepsilon]\rightarrow f([x_0-\varepsilon, x_0+\varepsilon])$ has a continuous inverse. In particular $f^{-1}$ is continuous at $y_0 = f(x_0) \subseteq f([x_0-\varepsilon, x_0+\varepsilon])$.
+	We now argue: $\lim_{y \rightarrow y_0}\frac{f^{-1}(y) - f^{-1}(y_0)}{y - y_0}$ exists and is qual to $\frac{1}{f'(x_0)}$. It is enough to show $\forall$ sequence $\{y_n\} \subseteq (c,d)\setminus \{y_0\}$ with $y_n \rightarrow y_0$, $\lim_{n\rightarrow \infty}\frac{f^{-1}(y_n)-f^{-1}(y_0)}{y_n-y_0}$ exists and equals $\frac{1}{f'(x_0)}$. Let $x_n = f^{-1}(y_n)$. Since $f^{-1}$ is continuous, $x_n = f^{-1}(y_n) \rightarrow f^{-1}(y_0) = x_0$. Therefore, $$\lim_{n\rightarrow \infty}\frac{f^{-1}(y_n) - f^{-1}(y_0)}{y_n-y_0} = \lim_{n\rightarrow \infty}\frac{x_n-x_0}{f(x_n)-f(x_0)} = \frac{1}{f'(x_0)}$$
+	 and we are done.
+*==*why can't we conclude that inverse f is continuous by f is a continuous bijection?*==
+Ex. $f(x) = \sin(x), x\in(-\pi/2,\pi/2), g(y) = f^{-1}(y) = \arcsin(y)$. $g'(\sin(x)) = \frac{1}{f'(x)} = \frac{1}{\cos(x)} = \frac{1}{\cos(\arcsin(y))} = \frac{1}{\sqrt{(1-y^2)})}$
+
+$f$ is infinitely differentiable if $f$ is $k$-times differentiable for all $k \geq 1$
+
+Notation. $C^k(a,b)=\{f(a,b)\rightarrow\mathbb{R}|f\: \text{is}\:k-\text{times\:differentiable\:and}f^{(k)}\:\text{is\:continuous}\}$
+$C^{\infty}(a,b)=\{f(a,b)\rightarrow\mathbb{R}|f\in C^k(a,b) \:\text{for all\:} k\} = \cap_{k=1}^{\infty}C^k(a,b)$
+
+## 5.4 Taylor's Theorem
+
+>[!important] Theorem (Taylor's Theorem)
+>Let $U\subseteq\mathbb{R}$ be an open interval, $f:U\rightarrow \mathbb{R}\:n$-times differentiable. Fix $a \in U$, then $\forall x \in U, \exists c \in$ between $a$ and $x$ s.t. 
+>$$f(x)=\sum_{k=0}^{n-1}\frac{f^{(k)}(a)}{k!}(x-a)^k+\frac{f^{(n)}(c)}{n!}(x-a)^n$$ 
+
+Proof:
+	#TODO
+
+Note. If $n=1$, we have $f(x) = \frac{f^{(0)}(a)}{0!}(x-a)^0+\frac{f'(c)}{1!}(x-a)^1 = f(a)+f'(c)(x-a)$ for c between $x,a$, i.e. $f'(c) = \frac{f(x) - f(a)}{x-a}$, which is MVT.
+Note that also $f^{(n)} = 0 \not\implies f(x)$ is constant. 
+Ex. $f(x) = \begin{cases}e^{-1/x}, x>0\\0, \:\:\:\:\:\:\:\:o.w.\end{cases}$ 
+Since $\lim_{x\rightarrow 0}e^{-1/x}= \lim_{x\rightarrow 0^+}\frac{1}{e^{1/x}} = 0$, $f$ is continuous at $0$. $f'(0) = \lim_{x\rightarrow 0^+}\frac{e^{-1/x}-0}{x-0} = \lim_{x\rightarrow 0^+}\frac{1}{xe^{1/x}} = -\lim_{y\rightarrow\infty}\frac{y}{e^y} = \lim_{y\rightarrow\infty}\frac{1}{e^y}=0$ (L'Hopital) $f$ is differentiable at $0$ and $f'(0)=0$. Induction on $n \implies f$ is $n$-times differentiable at $0$ and $f^{(n)}=0$, and thus $f$ is $C^{\infty}$ and $f^{(n)}=0,\forall n$. 
+
+**Corollary 5.4.1** Suppose $f\in C^{\infty}(-a,a)$ and $\exists M,C >0$ s.t. $\forall k \in \mathbb{N}, \forall x \in (-a,a)$, $|f^{(k)}(x)| \leq MC^k$.
+Then $\forall x \in (-a,a), f(x) = \sum_{k=0}^{\infty}\frac{f^{(k)}(0)}{k!}(:=\lim_{N\rightarrow \infty}\sum_{k=0}^{N}\frac{f^{(k)}(0)}{k!}x^k)$
+
+Ex. $f(x) = \sin x, f'(x) = \cos x, f''(x) = -\sin x...$ all derivatives satisfy $|f^{(n)}(x)|\leq 1, \forall x$, so $M=C=1$. (Cor 5.4.1) $\sin(x) = \sum_{k=0}^{\infty}\frac{\sin^{(k)}(0!)}{k!} = \sum_{n=0}^{\infty}\frac{(-1)^n}{(2n+1)!}x^{2n+1}$ 
+
+Remark. We can replace $(-a,a)$ with $(x_0-a,x_0+a)$, then $f(x) = \sum_0^{\infty}\frac{f^{(k)}(x_0)}{k!}(x-x_0)^k$
+Proof:
+	By Taylor's Theorem, $f'(x) - s_N(x) \equiv f(x) - \sum_{k=0}^N\frac{f^{(k)}(0)}{k!}x^k = \frac{f^{(N+1)}(c)}{(N+1)!}x^{N+1}$ for some $c$ between 0 and $x$. By assumption, $|f(x) - s_N(x)| = \frac{f^{(N+1)}(c)}{(N+1)!}|x|^{N+1} \leq \frac{M\cdot C^{N+1}}{(N+1)!}a^{N+1}$ 
+	Claim: $\lim_{N\rightarrow \infty}\frac{MC^{N+1}}{(N+1)!}a^{N+1} = 0$
+	Proof of claim: Let $b_N = \frac{MC^Na^N}{N!}$, note that $b_N > 0$. Then $\frac{b_{N+1}}{b_N} = \frac{N!M(Ca)^{N+1}}{(N+1)!M(ca)^N} = \frac{ca}{N+1} \rightarrow 0$ as $N\rightarrow 0$ $\implies \exists N_0$ s.t. for $\forall n \geq N_0, \frac{b_{n+1}}{b_n}\leq 1/2$, i.e., $b_{n+1}\leq \frac{1}{2}b_n$ $\implies \forall k, b_{n+k}\leq \frac{1}{2}b_{n+(k-1)}\leq \cdots \leq \frac{1}{2^k}b_n$ $\implies \lim_{N\rightarrow \infty}b_N = 0$
+	
+Note. The claim implies $s_N(x) \rightarrow f(x)$ uniformly, so we are done.
+
+Ex. $f(x) = \cos(x)$. Since $|f^{(k)}(x)|\leq 1, \forall k$, 5.4.1 implies that $\cos(x) = \sum_{k=0}^{\infty}\frac{\cos^{(k)}(0)}{k!}x^k = \sum_{k=0}^{\infty}\frac{(-1)^n}{(2n)!}x^{2n}$ for all $x$
+
+>[!note] Def (Real analytic)
+>A function $f$ is real analytic on an open set $U \subseteq \mathbb{R}$ if $f$ is infinitely differentiable on $U$ and $\forall a \in U, \exists \delta >0$ s.t. $f(x) = \sum_{k=0}^{\infty}\frac{f^{(k)}(a)}{k!}(x-a)^k, \forall x\in (a-\delta, a+\delta)$
+
+Ex. $f(x) = \sin(x),\cos(x),e^x,$ polynomials...
+$f(x) = \begin{cases}e^{-1/x^2}, x\neq 0\\ 0, x=0\end{cases}$ is not real analytic at 0 since $f^{(n)}(0)=0 \forall n$ but $f(x) \not\equiv 0$ for $x$ near 0.
+
+A function $f\in C^{\infty}(U)$ with the property that $f^{(k)}(a) = 0, \forall k, (a \in U$ fixed) is called **flat** at $a$.
+
+Ex. $f(x) = \frac{1}{1+x}$ is real analytic on $\mathbb{R}\setminus\{-1\}$
+proof:
+	Recall that $(q-1)(1+q+\cdots +q^k) = q^{n+1}-1 \implies \sum{k=0}^{\infty}q^n = \frac{1^{n+1}-1}{q-1}\rightarrow_{n\rightarrow \infty}\frac{1}{1-q}$ if $|q| < 1$. Thus for $q$ with $|q| < 1, \sum_{n=0}^{\infty}q^n = \frac{1}{1-q} \implies \sum_{n=0}^{\infty}(-1)^nq^n = \frac{1}{1+q}$. Now for $a \neq -1$, we have
+	$\frac{1}{1+x} = \frac{1}{1+a+x-a} = \frac{1}{1+a}\cdot \frac{1}{1+\frac{x-a}{a+1}} = \frac{1}{1+a}\cdot \sum_{n=0}^{\infty}\frac{(-1)^n(x-a)^n}{(a+1)^n}$ if $|\frac{x-a}{a+1}| < 1$. Thus $\forall a, \forall x$ with $|x-a| < |a+1|, \frac{1}{x+1} = \sum_{n=0}^{\infty}\frac{(-1)^n}{(1+a)^{n+1}}(x-a)^n$ and one can show that $f^{(k)}(a) = \frac{(-1)^k}{(1+a)^{k+1}}k!$
 
 # Chapter 6 Riemann Integrals
 
+## 6.1 Darboux Integral
+
+Notation $f:[a,b]\rightarrow \mathbb{R}$ bounded function, $S \subseteq[a,b]$ a subset ($S \neq \varnothing$). $M(f,S):=\sup\{f(x)|x\in S\}, m(f,S):= \inf\{f(x)|x\in S\}$.
+Note. If $S$ is an interval of length $l, f|_S \geq 0$ we expect $m(f,S)\cdot l \leq \int_{S}f(x)ds \leq M(f.S)\cdot l4$ 
+    
+>[!note] Def (Partition, Darboux sum)
+>(i) (Partition) A partition $\mathcal{P}$ of an interval $[a,b]$ is a finite strictly increasing sequence $a = t_0 < t_1 < \cdots t_{n-1} < t_n = b$
+>(ii) The upper Darboux sum $U(f,\mathcal{P})$ of $f:[a,b]\rightarrow\mathbb{R}$ w.r.t. $\mathcal{P}$ is $$U(f,\mathcal{P}) := \sum_{k=1}^n M(f,[t_{k-1},t_k])\cdot (t_k-t_{k-1})$$
+>(iii) The lower Darboux sum $L(f,\mathcal{P})$ of $f:[a,b]\rightarrow\mathbb{R}$ w.r.t. $\mathcal{P}$ is $$L(f,\mathcal{P}) := \sum_{k=1}^n m(f,[t_{k-1},t_k])\cdot (t_k-t_{k-1})$$
+
+Ex. $f(x) = x+1,[a,b]=[1,3], \mathcal{P} = 1 = t_0 < 2 = t_1 < 3 = t_2$.
+$U(f,P) = 3\cdot(2-1)+4\cdot(3-2) = 7, L(f,P) = 2\cdot (2-1) + 3\cdot (3-2) = 5$
+
+Note. For any partition $P = a = t_0 < t_1 < \cdots < t_n = b$, 
+$U (f,P) \leq \sum_{i=1}^n M(f,[a,b])\cdot (t_i-t_{i-1}) = M(f,[a,b])(b-a)$ 
+$L (f,P) \geq \sum_{i=1}^n m(f,[a,b])\cdot (t_i-t_{i-1}) = L(f,[a,b])(b-a)$ 
+Thus for all partition $P$, we have $m(f,[a,b])\cdot (b-a)\leq L(f,P)\leq U(f,P) \leq M(f,[a,b])(b-a)$. Hence the sets $\{U(f,P)| P \text{ is a partition of [a,b]}\}$, $\{L(f,P)| P \text{ is a partition of [a,b]}\}$
+are bounded.
+We can define $U(f) = \inf\{U(f,P)| P\text{ is a partition})\}, L(f) = \sup\{L(f,P)| P\text{ is a partition}\}$ 
+
+>[!note] Def (Darboux integrable)
+>A function $f:[a,b]\rightarrow\mathbb{R}$ is (Darboux) integrable if $U(f) = L(f)$. In this case we define 
+>$$\int_a^b f(x)dx := L(f) = U(f)$$
+
+Remark. We'll prove shortly that $L(f) \leq U(f)$. Hence to prove integrability it's enough to show $U(f) \leq L(f)$.
+Ex. $f:[0,1]\rightarrow\mathbb{R}, f(x) = \begin{cases} 1,\:x\:irrational\\ 0, \:x\:rational\end{cases}$. Then for all $S \subseteq [0,1], M(f,S) = 1, m(f,S) = 0$ $\implies \forall P, L(f,P) = 0, U(f,P) = 1$. 
+$\implies L(f) = \sup\{L(f,P)| P\text{ a partition}\} = 0$. $U(f) = \sup\{U(f,P)| P\text{ a partition}\} = 1$. 
+Hence $f$ is not (Darboux) integrable.
+
+Ex. $f(x) = x$ on $[0,b]\: (b>0), P = \{0=t_0 < t_1 < \cdots < t_n = b\}$. $U(f,P) = \sum_{k=1}^n M(f,[t_{k-1},t_k])\cdot (t_k, t_{k-1}) = \sum_{k=1}^n t_k (t_k - t_{k-1})$. Similarly, $L(f,P) = \sum_{k=1}^n t_{k-1}(t_k - t_{k-1})$.
+In particular let $P_n$ be the partition with $t_k = \frac{kb}{n}$, Then $U(f,P_n) = \sum_{k=1}^n \frac{kb}{n}\cdot (\frac{kb}{n} - \frac{(k-1)b}{n})$ 
+$= \sum_{k=1}^n \frac{kb}{n}\cdot\frac{b}{n} = \frac{b^2}{n^2}\sum_{k=1}^n k = \frac{b^2}{n^2} \frac{n(n+1)}{2} = \frac{b^2}{2}\frac{n+1}{n}$. Similarly, $L(f,P_n) = \frac{b^2}{2}\cdot\frac{n-1}{n}$.
+Since $U(f) = \inf\{U(f,P)\} \leq U(f,P_n) = \frac{b^2}{2}\cdot \frac{n+1}{n}$. $U(f) \leq \lim_{n\rightarrow\infty}\frac{b^2}{2}\cdot\frac{n+1}{n}=\frac{b^2}{2}$
+Similarly $L(f) = \sup\{L(f,P)\} \geq L(f,P_n) = \lim_{n\rightarrow\infty}\frac{b^2}{2}\cdot \frac{n-1}{n} = \frac{b^2}{2}$. 
+$\implies \frac{b^2}{2}\leq L(f) \leq U(f) \leq \frac{b^2}{2} \implies L(f) = U(f) = \frac{b^2}{2}, \therefore \int_0^b xdx = \frac{b^2}{2}$.
+
+More generally "sauce" argument gives:
+Suppose $f:[a,b]\rightarrow\mathbb{R}$ is bounded, $\{P_n\},\{Q_n\}$ are sequence of partitions of $[a,b]$ s.t. the limits $\lim_{n\rightarrow \infty} U(f,P_n), \lim_{n\rightarrow \infty} L(f,Q_n)$ exists and are equal. Then
+(i) $f$ is integrable and
+(ii) $\int_a^b L(f,Q_n) = \lim_{n\rightarrow \infty}U(f,P_n)$
+
+Now cope with $L(f) \leq U(f)$
+**Lemma 6.1.2** Let $f_b[a,b]\rightarrow \mathbb{R}$ be bounded, $P,Q$ two partitions of $[a,b]$ with $P \subseteq Q$. Then
+$$L(f,P) \leq L(f,Q) \leq U(f,Q) \leq U(f,P)$$
+proof:
+	We prove that $L(f,P) \leq L(f,Q)$, The other proof is similar. It's sufficient to consider the case when $Q$ has one more point than $P$. That is, $P = \{a=t_0< t_1 < \cdots < t_n = b\}$, $Q = \{a=t_0< t_1 <\cdots <t_k < U < t_{k+1} < \cdots t_n = b\}$. Then $L(f,Q) - L(f,P) = m(f,[t_k,u])(u-t_k) + m(f,[u, t_{k+1}])(t_{k+1}-k) - m (f, [t_k,t_{k+1}])(t_{k+1}-t_k)$ $= (m(f,[t_u,u]) - m(f,[t_k,t_{k+1}]))(u-t_k) + m(f,[u,t_{k+1}]) - m(f, [t_k,t_{k+1}])\cdot (t_{k+1} - u) \geq 0$ 
+	Since $m(f,[t_k,u])\geq m(f,[t_k,t_{k+1}])$, $m(f,[u,t_{k+1}])\geq m(f,[t_k,t_{k+1}])$
+
+**Corollary 6.1.3** Suppose $f:[a,b]\rightarrow\mathbb{R}$ is bounded, $P,Q$ two partitions of $[a,b]$, then $L(f,P) \leq U(f,Q)$
+proof:
+	$P,Q \subseteq P \cup Q$. Hence by 6.1.2 $L(f,P) \leq L(f, P\cup Q)\leq U(f, P\cup Q)\leq U(f, Q)$
+
+**Theorem 6.1.4** $f:[a,b]\rightarrow\mathbb{R}$ bounded. Then $L(f) \leq U(f)$.
+proof:
+	$\forall$ two partitions $P,Q$ of $[a,b]$, $L(f,P) \leq U(f,Q)\implies L(f) :=\sup L(f,P) \leq U(f,Q)$ for any $Q$. Which implies that $\sup L(f,P) \leq \inf U(f,Q) = U(f)$
+
+>[!note] Cauchy criterion for integrability
+>Suppose $f:[a,b]\rightarrow \mathbb{R}$ is bounded. then $f$ is integrable on $[a,b]\implies \forall\varepsilon > 0, \exists$ a partition $P$ of $[a,b]$ s.t. 
+>$$U(f,P) - L(f,P) < \varepsilon$$ 
+
+proof:
+	$(\implies)$ Since $f$ is integrable, $U(f) = L(f)$. Since $U(f) = \inf_P U(f,P), L(f) = \sup_PL(f,P), \exists$ partitions $P_1,P_2$ s.t. $U(f,P_1) < U(f) + \varepsilon/2, L(f,P_2) \geq L(f) - \varepsilon/2$. Let $P = P_1 \cup P_2$. Then
+	$U(f,P) \leq U(f,P_1) \leq U(f) + \varepsilon/2$, $L(f,P)\geq L(f, P_2) \geq L(f) - \varepsilon/2$. Then $U(f,P) - L(f,P) \leq U(f) - L(f) + \varepsilon = \varepsilon$ since $L(f) = U(f)$
+	($\impliedby$) Suppose $\forall \varepsilon > 0, \exists P$ s.t. $U(f) -L(f) \leq \varepsilon$. Then $U(f) \leq U(f, P) = U(f,P) - L(f,P)+L(f,P) \leq L(f,P) + \varepsilon \leq L(f) + \varepsilon$. $\implies \forall \varepsilon >0$, we have$(0 \leq )U(f) - L(f) \leq \varepsilon \implies U(f) = L(f)$ and $f$ is integrable.
+
+**Def (Mesh)** The mesh of a partition $P = t_0 < t_1 < \cdots <t_n$ is mesh$(P) = \max\{t_i - t_{i-1}|i = 1,2,\cdots n\}$, 
+
+>[!note] Def (Riemann Sum)
+>Let $f:[a,b]\rightarrow\mathbb{R}$ be a bounded function, $P = \{a = t_0 < t_1 <\cdots < t_k = b\}$ a partition of $[a,b]$. Choose $x_k \in [t_{k-1},t_k],\forall k$. The corresponding Riemann sum is 
+>$$S:= \sum_{k=1}^n f(x_k)\cdot (t_k - t_{k-1})$$
+
+>[!note] Def (Riemann Integrable)
+>A (bounded) function $f:[a,b]\rightarrow\mathbb{R}$ is Riemann integrable if $\exists R \in\mathbb{R}$ s.t. $\forall \varepsilon > 0, \exists \delta > 0$ with two properties that $\forall$ partition $P$ with mesh$(P) < \delta, \forall$ Riemann sum $S$ of $f$ associated with $P$,$$|S-R| < \varepsilon$$
+>$R$ is called the Riemann integral of $f$.
+
+**Theorem 6.1.5** A bounded function $f:[a,b]\rightarrow\mathbb{R}$ is Riemann integrable $\iff f$ is Darboux integrable. the value of the two integrals agree.
+proof: #TODO postponed...
+
+## 6.2 Properties of Integrals
+
+**Theorem 6.2.1** Every monotonic function $f:[a,b]\rightarrow\mathbb{R}$ is integrable.
+proof:
+	We consider the case where $f$ is weakly increasing. Since $f(a) \leq f(x) \leq f(b), \forall x \in [a,b], f$ is bounded. We argue that $\forall \varepsilon >0, \exists$ a partition $P$ of $[a,b]$ s.t. $U(f,P) - L(f,P) < \varepsilon$. Let $P_n = t_0 = a < t_1 <\cdots < t_n = b$ where $t_k:= a + \frac{b-a}{n}k$. 
+	Then $U(f,P_n) = \sum \sup(f|_{[t_k,t_{k-1}]}) \cdot (t_k - t_{k-1}) = \sum_{k=1}^n f(t_k) \cdot \frac{b-a}{n}$. 
+	Similarly, $U(f,P_n) = \sum_{k=1}^n f(t_{k-1})\cdot \frac{b-a}{n}$. Hence
+	$U(f,P_n) - L(f,P_n) = \frac{b-a}{n}\sum_{k=1}^n (f(t_k) - f(t_{k-1}))$
+	$=\frac{b-a}{n}((f(t_1)-f(t_0)) + (f(t_2) - f(t_1)) + \cdots + (f(t_n) - f(t_{n-1})) = \frac{b-a}{n} (f(b) - f(a))$
+	Now given $\varepsilon > 0$ choose $n$ s.t. $\frac{(b-a)(f(b) - f(a))}{n} < \varepsilon$, then $U(f,P_n) - L(f,P_n) < \delta$ and we are done by Cauchy criteria for integrability.
+ 
+**Theorem 6.2.2** Every continuous function $f:[0,1]\rightarrow\mathbb{R}$ is integrable.
+proof:
+	Since $[a,b]$ is compact, $f$ is uniformly continuous: $\forall \varepsilon> 0, \exists \delta >0$ s.t. $|x-y| < \delta \implies$ $|f(x) - f(y)| < \frac{\varepsilon}{b-a},\forall x,y \in [a,b]$. Let $P$ be a partition of $[a,b]$ with mesh$(P) < \delta$. Now $\forall k, \exists x_k,y_k\in[t_{k-1},  t_k]$ s.t. $f(x_k) = \sup\{f(x)| x\in [t_{k-1},t_k]\}$ and $f(y_k) = \inf\{f(x)| x\in [t_{k-1},t_k]\}$. Then $M(f, [t_{k-1},  t_k]) - m(f, [t_{k-1},  t_k]) = f(x_k) - f(y_k) <\frac{\varepsilon}{b-a}$ since $|x_k-y_k| \leq |t_k - t_{k-1}| < \delta$. Therefore $U(f,P) - L(f,P) = \sum_{k=1}^n  (M(f, [t_{k-1},  t_k]) - m(f, [t_{k-1},  t_k])) \cdot (t_k - t_{k-1})$ $\leq \sum_{k} \frac{\varepsilon}{b-a} \cdot (t_k - t_{k-1}) =\frac{\varepsilon}{b-a} \cdot (b-a) =\varepsilon$. By Cauchy's criteria, $f$ is integrable.  
+
+**Theorem 6.2.3** suppose $f, g:[a, b]-R$ are bounded and integrable
+(i) $\forall c \in \mathbb{R}$ of is integrable and $\int_a^b c f=c \int_a^b f$
+(ii) $f+g$ is integrable and $S_a^b(f+g)=\int_a^b f+\int_a^b g$.
+
+Remark. Theorem says astounded integrable functions form a vector space and (b) : $\int_a^b$ : integrable functions $\rightarrow \mathbb{R}, f \mapsto S_a^b f$ to linear.
+
+proof:
+	It's enough to prove (i) for $c>0$ and for $c=-1$ :
+	if $c<0, c=(-1)|c|$ and then $\int_a^b c f=\int_a^b(-1)|c| f=(-1) \int_a^b|c| f = (-1)(-c) \int_a^b f=c \int_a^b f$
+	If $c=0, c f=0$ and then $\int_a^b 0 \cdot f=0=0 \cdot \int_a^b f$.
+	If $c=-1, \sup (-f|_{[t_k, t_{k-1}]})=-\inf(f|_{[t_k, t_{k-1}]}), \inf (-f|_{[t_k, t_{k-1}]})=-\sup(f|_{[t_k, t_{k-1}]})$, $\forall[t_k, t_{k-1}] \leq[a, b]$
+	$\implies\forall$ partition $P$ of $(a, b)$
+$$
+\begin{gathered}
+U(-f, p)=-L(f, p) \\
+L(-f, p)=-U(f, P) \\
+\Rightarrow U(-f)=\inf _p( U(-f, p))=\inf _p(-L(f, P))=-\sup _p L(f, P)=-L(f).
+\end{gathered}
+$$
+	Similarly $L(-f)=-U(f)$. $\Rightarrow-f$ is integrable and $\int_a^b(-f)=-\int_a^b f$.
+	If $c>0$, $\sup \{cf(x)|_{[t_k, t_{k-1}]}\}=c \sup (f(x)|_{[t_k, t_{k-1}]})$, $\inf \{cf(x)|_{[t_k, t_{k-1}]}\}=c \inf (f(x)|_{[t_k, t_{k-1}]})$
+$$
+\Rightarrow U(c f, P)=c \cdot U(f, p), \quad L(c f, P)=c L(f, P) \forall P
+$$
+$$
+\Rightarrow u(c f)=c u(f)=c L(f)=L(c f)
+$$
+	$\Rightarrow c f$ is integrable and $S_a^b c t=c \int_a^b f$.
+	For (ii):
+
 
 # Chapter 7 Interchange of limit operations
-
