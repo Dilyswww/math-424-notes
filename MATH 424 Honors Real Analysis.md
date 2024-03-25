@@ -736,6 +736,8 @@ Ex. $\mathbb{R}^n$ is path-connected. $\forall p,q \in \mathbb{R}^n$, $\gamma(t)
 Remark. Convex sets are path connected. In particular, closed and open balls in $\mathbb{R}^n$ (w.r.t. $d_1,d_2,d_{\infty}$) are all convex, and thus path-connected.
 Ex. $X = \{(x,y) \in \mathbb{R}^2: xy \geq 0\}$ is path connected but not convex. 
 
+*If U $\subseteq \mathbb{R}^n$ is open, then path components of U are open.* 
+
 **Theorem 4.5.2** Path connected $\implies$ connected
 Proof:
 	Suppose $X$ is path-connected, $U,V \subseteq X$ open, $U \cup V = X$. $U \cap V \neq \varnothing$. Suppose by contradiction that both $U \neq \varnothing$ and $V \neq \varnothing$. Then $\exists \gamma : [0,1]\rightarrow X$ s.t. $\gamma (0) \in U, \gamma(1) \in V$. But then $[0,1] = \gamma^{-1}(U\cup V) = U ^{-1} \cup V^{-1}$, and thus $0 \in \gamma^{-1}(U), 1 \in \gamma^{-1}(V)$ and $\gamma^{-1}(U) \cap \gamma^{-1}(V) = \varnothing$. This contradicts the connectedness of $[0,1]$. 
@@ -1018,10 +1020,9 @@ proof:
 
 **Theorem 6.2.3** suppose $f, g:[a, b]-R$ are bounded and integrable
 (i) $\forall c \in \mathbb{R}$ of is integrable and $\int_a^b c f=c \int_a^b f$
-(ii) $f+g$ is integrable and $S_a^b(f+g)=\int_a^b f+\int_a^b g$.
+(ii) $f+g$ is integrable and $\int_a^b(f+g)=\int_a^b f+\int_a^b g$.
 
-Remark. Theorem says astounded integrable functions form a vector space and (b) : $\int_a^b$ : integrable functions $\rightarrow \mathbb{R}, f \mapsto S_a^b f$ to linear.
-
+Remark. Theorem says astounded integrable functions form a vector space and (b) : $\int_a^b$ : integrable functions $\rightarrow \mathbb{R}, f \mapsto \int_a^b f$ to linear.
 proof:
 	It's enough to prove (i) for $c>0$ and for $c=-1$ :
 	if $c<0, c=(-1)|c|$ and then $\int_a^b c f=\int_a^b(-1)|c| f=(-1) \int_a^b|c| f = (-1)(-c) \int_a^b f=c \int_a^b f$
@@ -1041,10 +1042,162 @@ $$
 \Rightarrow U(c f, P)=c \cdot U(f, p), \quad L(c f, P)=c L(f, P) \forall P
 $$
 $$
-\Rightarrow u(c f)=c u(f)=c L(f)=L(c f)
+\Rightarrow U(c f)=c U(f)=c L(f)=L(c f)
 $$
-	$\Rightarrow c f$ is integrable and $S_a^b c t=c \int_a^b f$.
-	For (ii):
+	$\Rightarrow c f$ is integrable and $\int_a^b c f=c \int_a^b f$.
+	For (ii): Since $f,g$ are integrable, $\forall \varepsilon> 0, \exists$ partition $P_1,P_2$ s.t. 
+	$U(f,P)-L(f,P) < \varepsilon/2, U(g,P) 0-L(g,P) < \varepsilon/2$ (Cauchy Criteria). Let $P = P_1 \cup P_2$, then $U(f,P) - L(f,P) < \varepsilon/2, U(f,P) - L(f,P) < \varepsilon /2$. Note that $\forall S \subseteq [a,b], \forall x\in S$, 
+	$(f+g)(x) = f(x) + g(x) \leq \sup(f|_S) + \sup(g|_S) \implies \sup ((f+g)|_S) \leq \sup(f|_S) + \sup(g|_S)$
+	Similarly, $\inf ((f+g)|_S) \geq \inf(f|_S) + \inf(g|_S) \implies$ $L(f+g,P) \geq L(f,P) + L(g,P), U(f+g, P) \leq U(f,P) + U(g,P)$.
+	$U(f+g,P) - L(f+g,P)<\varepsilon/2 + \varepsilon/2 = \varepsilon$ and by Cauchy's criteria it is integrable.
+
+**Theorem 6.2.4** Suppose $a<b<c, \quad f:[a, c] \rightarrow \mathbb{R}$ is bounded and flabby, $f \mid(b, c)$ are integrable. Then $f$ is integrable and $\int_{[a, c]} f=\int_{[a, b]} f+\int_{[b, c]} f \text {. }$
+proof:
+	Given $\varepsilon>0, \exists$ partitions $P_1$ of $[a, b]$. $P_2$ of $[b, c]$ So that $U\left(f, P_1\right)-L\left(f, P_1\right)<\varepsilon / 2$ and $U\left(f_1 P_2\right)-L\left(f_1 P_2\right)<\varepsilon / 2$. Let $P=P_1 \cup P_2$. Then $\left.U(f, P)=U\left(f, P_1\right)+U\left(f, P_2\right), L (f, P\right)=L\left(f, P_1\right)+L\left(f, P_2\right)$. Hence $U(f, P)-L(f, P)<\varepsilon / 2+\varepsilon / 2=\varepsilon$ $\Rightarrow f$ in integrable on $[a, c]$.
+	Furthermore
+$$
+\begin{aligned}
+& \int_{[a, c]} f=U(f) \leq U(f, P)=U\left(f, p_1\right)+U\left(f, P_2\right) \\
+& <L\left(f, P_1\right)+\varepsilon / 2+L\left(f, P_2\right)+\varepsilon / 2 \leqslant \int_{[a, b]} f+\int_{\left[b, c\right]} f+\varepsilon \text {. } \\
+&
+\end{aligned}
+$$
+	Similarly, $\int_{[a, c]} f \geq L(f, P)=L\left(f, P_1\right)+L\left(f, P_2\right) \geq\left(U\left(f, P_1\right)-\varepsilon / 2\right)+\left(U\left(f, P_2\right)-\varepsilon / 2\right)$
+$$
+\begin{aligned}
+& \geqslant\left(\int_{[a, b]} f-\varepsilon / 2\right)+\left(\int_{[b, c]} f-\varepsilon / 2\right)=\left(\int_{[a, b]} f+\int_{[c, d]} f\right)-\varepsilon \\
+\Rightarrow \quad \mid \int_{[a, c]} f & -\left(\int_{\{a, b]} f+\int_{[b, c]} f\right) \mid<\varepsilon \quad \forall \varepsilon . \\
+=\quad \int_{[a, c]} f & =\int_{[a, b]} f+\int_{[b, c]} f .
+\end{aligned}
+$$
+
+Remark At this point, given $f:[a, b] \rightarrow \mathbb{R}$, integrable, we can define
+(\*) $\int_b^a f(x) d x=-\int_{[a, b]} f$. And then $\int_a^b f(x) d x+\int_b^c f(x) d x=\int_a^c f(x) d x$
+even if $b$ in not between $a$ and $c$ (provided $f$ is integrable on the three relevant intervals).
+WARNING $\int_a^b f(x) d x$ is then not an integral of a function; it's the integral of the 1 -form $f(x) d x$, It's an oriented integral. Forms are discussed in MATH 425.
+
+**Theorem 6.2.5** Suppose $f:[a, b]\rightarrow[c, d]$ is integrable $g:[c, d] \rightarrow \mathbb{R}$ continuous. Then $h(x):=g(f(x))$ is integrable on $[a, b]$
+proof:
+	By Cauchy's criteria it's enough to show that $\forall \varepsilon > 0, \exists$ a partition $P = \{a = t_0<t_1<\cdots < t_n = b\}$ of $[a,b]$ s.t. $U(h) - L(h) < \varepsilon$. 
+	1. Let $K = \sup\{|g(y)|:y\in[c,d]\}$
+	2. Choose any $\varepsilon' s.t. 0 < \varepsilon' <  \frac{\varepsilon}{2k+(b-a)}$.
+	3. Since $[c,d]$ is compact, $g:[c,d]\rightarrow \mathbb{R}$ is uniformly continuous $\implies \exists \delta$ s.t. $\delta < \varepsilon'$ and $|s-t| < \delta \implies |g(s) - g(t)|  < \varepsilon'$.
+	4. Since $f$ is integrable, $\exists$ a partition $P = \{a = t_0 < t_1 <\cdots < t_n = b\}$ of $[a,b]$ s.t. $U(f,P) - L(f,P) < \delta^2$. We now argue that $P$ is the desired partition.
+	Notation: For any $\varphi:[a,b]\rightarrow\mathbb{R}, \varphi$ bounded, set $M_i(\varphi) = \sup\{\varphi|_{[t_{i-1},t_i]}\}, m_i(\varphi) = \inf\{\varphi|_{[t_{i-1},t_i]}\}$.
+	Let $A = \{k \in \{1,2,\cdots,n\}|M_k(f) - m_k(f) < \delta\}, B = \{k \in \{1,2,\cdots,n\}|M_k(f) - m_k(f) \geq \delta\}$. Then $\forall i \in A, \forall x,y \in [t_{i-1},t_i], |f(x) - f(y)| \leq M_i(f) -m_i(f) < \delta$.
+	And then $|g(f(x)) - g(f(y)) | < \varepsilon'$ $\implies M_i(g\circ f) - m_i(g\circ f)\leq \varepsilon' \implies$ $\sum_{i \in A}(M_i(g\circ f) - m_i(g \circ f))(t_i - t_{i-1})\leq\varepsilon'\sum_{i\in A}(t_i - t_{i-1}) \leq \varepsilon'(b-a)$. 
+	If $i \in B$ then $\frac{1}{\delta}(M_i(f) - m_i(f)) \geq 1$, $\sum_{i \in B}(M_i(f) - m_i(f))(t_i - t_{i-1}) \leq$ $\sum_{i \in B}\frac{1}{\delta}(M_i(f) - m_i(f))(t_i - t_{i-1}) \leq \frac{1}{\delta}(U(f,P) - L(f,P))\leq \frac{1}{\delta}\cdot\delta^2 = \delta < \varepsilon'$. 
+	Since $M_i(g\circ f) - m_i(g\circ f) \leq 2k,\forall i$, $$\sum_{i \in B}(M_i(g\circ f) - m_i(g\circ f))(t_i - t_{i-1}) \leq 2K\sum_{i \in B}(t_i - t_{i-1}) < 2K \varepsilon'$$Hence $U(g\circ f,P) - L(g\circ f,P)$ 
+	$= \sum_{i \in A}(M_i(g\circ f) - m_i(g\circ f))(t_i - t_{i-1}) + \sum_{i \in B}(M_i(g\circ f) - m_i(g\circ f))(t_i - t_{i-1})$ 
+	$< \varepsilon'(b-a) + 2k\varepsilon' = \varepsilon'((b-a)+2k) < \varepsilon$
+
+**Theorem 6.2.6** If $f, g:[a, b] \rightarrow \mathbb{R}$ are integrable and $f(x) \in g(x) \forall x$. Then $\int_{[a, b]} f \leqslant \int_{[a, b]} g$
+proof:
+	For any partition $P, U(f, P) \leqslant U(g, P)$. Hence $U(f)=\inf _p U(f, P) \leq U(f, P) \leq U(g, P) \quad \forall P$
+$$
+\Rightarrow \int_{[a, b]} f=\inf _P U(f, P) \leqslant \inf _P U(g, P)=\int_{[G, b]} g .
+$$
+
+**Corollary 6.2.7** If $f:[a, b] \rightarrow \mathbb{R}$ is integrable, so is $|f|$. Moreover $\left|\int_{[a, b]} f\right| \leqslant \int_{[a, b]}|f|$.
+proof: 
+	Since $g(x)=|y|$ is continuous, $|f|(x)=(g \circ f)(x)$ is integrable by 6.2.5. Since
+	$-|f(x)| \leq f(x) \leq |f(x)|\forall x,-|f| \leq f \leq|f| .$ By 6.2.6, $|\int_{a}^{b} f(x) \, dx| \leq \int_{a}^{b} |f(x)| \, dx$ 
+
+**Corollary 6.2.8** (i) $\forall$ integrable function $q:[a,b]\rightarrow\mathbb{R},q^2$ is integrable. (ii) If $f, g:[a, b] \rightarrow \mathbb{R}$ are integrable, then so is $f \cdot g$.
+proof:
+	(i) Since $h(y)=y^2$ is continuous, $q^2=h \circ q$ is integrable
+	(ii) $f \cdot g=\frac{1}{4}((f+g)^2 -(f-g)^2)$, $f, g$ integrable $\Rightarrow f \pm g$ are integrable $-(f+g)^2,(f-g)^2$ are integrable $\implies f\cdot g$ is integrable.
+
+>[!important] Theorem (Fundamental theorem of calculus, version 1)
+>Suppose $g:[a, b] \rightarrow \mathbb{R}$ continuous, $g f_{(a, b)}$ is differentiable, and $g^{\prime}$ is (bounded aud integrable on $[a, b]$. Then
+>$$
+\int_{[a, b]} g^{\prime}\left(=\int_a^b g^{\prime}(x) d x\right)=g(b)-g(a) \text {. }
+$$
+
+proof 
+	Fix a partition $P=\left\{a=t_0<t_1<\ldots<t_{n-1}<t_h=b\right\}$.
+	By Mean Value Theorem $\forall k \quad \exists x_k \in\left[t_k, t_{k-1}\right]$ so that
+$$
+g^{\prime}\left(x_k\right)=\frac{g\left(t_k\right)-g\left(t_{k-1}\right)}{t_k-t_{k-1}}
+$$
+	ie. $\quad g^{\prime}\left(x_k\right)\left(t_k-t_{k-1}\right)=g\left(t_k\right)-g\left(t_{k-1}\right)$
+	$\Rightarrow \quad \forall k$
+$$
+m\left(g^{\prime},\left(t_{k-1}, t_k\right)\right)\left(t_k-t_{k-1}\right) \leqslant \underbrace{g^{\prime}\left(x_k\right)\left(t_k-t_{k-1}\right)}_{g\left(t_k\right)-g\left(t_{k-1}\right)} \leqslant M\left(g^{\prime},\left[t_{k-1}, t_k\right]\right) \cdot\left(t_k-t_{k-1}\right)
+$$
+$$
+L\left(g^{\prime}, P\right)=\sum_k m\left(g^{\prime},\left[t_{k-1}, t_k\right)\right)\left(t_k-t_{k-1}\right) \leq \sum_{k=1}^n\left(g^{\prime}\left(t_k\right)-g\left(t_{k-1}\right)\right)=g(b)-g(a)
+$$
+	similarly
+$$
+U(g^{\prime}, p)=\sum_k M(g^{\prime},[t_{k-1}, t_k])(t_k-t_{k-1}) \geq \sum_{k=1}^n\left(g(t_k)-g (t_{k-1}\right)) =g(b)-g(a)
+$$
+	Hence $\quad \int_{[a(b)} g^{\prime}=\sup _p L\left(g^{\prime}, P\right) \leqslant g(b)-g(a)$
+$$
+\int_{[a, b]} g^{\prime}=\inf _p u\left(g^{\prime}, p\right) \geq g(b)-g(a)
+$$
+	Therefore,
+$$
+\int_{[a, b]} g^{\prime}=g(b)-g(a)
+$$
+
+
+**==Corollary 24.2==** **(Integration by parts)** Suppose $f:[a, b] \rightarrow \mathbb{R}$ are continuous, differentiable on $[a, b]$ and $f^{\prime}, g^{\prime}$ are integrable on $[a, b]$. Then$\int_{[a, b]} f \cdot g^{\prime}=(f(b) g(b)-f(a) g(a))-\int_{[a, b]} f^{\prime} \cdot g$
+proof
+	$(f \cdot g)^{\prime}=f^{\prime} \cdot g+f \cdot g^{\prime}$
+	Since $f^{\prime}, g_1^{\prime}, f, g$ are integrable so is $(t g)^{\prime}$.
+	By FTC version 1
+$$
+\begin{aligned}
+f(b) g(b)-f(a) g(a) & =\int_{[a, b]}(f g)^{\prime}=\int_{[a, b]}\left(f^{\prime} g+f g^{\prime}\right) \\
+& =\int_{[a, b]} f^{\prime} \cdot g+\int_{[a, b]} f \cdot g^{\prime} .
+\end{aligned}
+$$
+
+>[!important] Theorem (Fundamental theorem of calculus, version 2)
+> Suppose $f:[a, b] \rightarrow \mathbb{R}$ is (bounded and) integrable. Then $F(x):=\int_a^x f(u) d u$ is continuous.
+> Moreover, if $f$ is continuous at $x_0 \in(a, b)$ Then $F$ is differentiable at $x_0$ and$$
+F^{\prime}\left(x_0\right)=f\left(x_0\right) \text {. }
+$$
+
+proof
+	Since $f$ is bounded $\exists M>0$ s.t. $|f(x)| \leq M \quad \forall x \in[a, b]$. We argue first that $F$ is uniformly continuous.
+	For any $x, y \in(a, b), x<y$
+$$
+\begin{aligned}
+& |F(y)-F(x)|-\left|\int_a^y F-\int_a^x F\right|=\left|\int_a^x F+\int_x^y F-\int_a^x F\right| \\
+& =\left|\int_{[x, y]} F\right| \leq \int_{[x, y]}|F| \leq \int_{[x, y]} M=M(y-x)=M|y-x| .
+\end{aligned}
+$$
+	$\therefore F$ is (uniformly) continuous
+	We now argue that $F$ differentiable at $x_0$ and that $F^{\prime}\left(x_0\right)=f\left(x_0\right)$, ie
+$$
+\lim _{h \rightarrow 0}\left|\frac{1}{h}\left(F\left(x_0+h\right)-F\left(x_0\right)\right)-f\left(x_0\right)\right|=0
+$$
+	Note: $f\left(x_0\right)=\frac{1}{h} \cdot f\left(x_0\right) \cdot\left(\left(x_0+h\right)-x_0\right)=\frac{1}{h} \int_{x_0}^{x_0+h} f\left(x_0\right) d x$
+$$
+\begin{aligned}
+\Rightarrow \quad&\left |\frac{1}{h}\left(F\left(x_0+h\right)-F\left(x_0\right)\right)-f\left(x_0\right)\right|=\left|\frac{1}{h}\left(\int_a^{x_0+h} f-\int_a^{x_0} f\right)-f\left(x_0\right)\right| \\
+&=\left|\frac{1}{h}\left(\int_{x_0}^{x_0+h} f-\frac{1}{h} \int_{x_0}^{x_0+h} f\left(x_0\right)\right)\right|=\left|\frac{1}{h} \int_{x_0}^{x_0+h}\left(f(u)-f\left(x_0\right)\right) d u\right| \\
+&\leq\left|\int_{x_0}^{x_0 \pm h} \frac{\left|f(u)-f\left(x_0\right)\right|}{|h|} d u\right| \leqslant \sup \left\{\left|f(u)-f\left(x_0\right)\right| \mid u+\left(x_0+|h\left|, x_0-\right| h\right|)\right\}
+\end{aligned}
+$$
+	Since $f$ is continuous at $x_0, \forall \varepsilon>0 \quad \exists \delta>0$ s.t.
+$$
+\left|u-x_0\right|<\delta \Rightarrow\left|f(u)-f\left(x_0\right)\right|<\varepsilon / 2
+$$
+	Therefore it $|h-0|<\delta$ then
+$$
+\begin{aligned}
+& \left|\frac{1}{h}\left(E\left(x_0+h\right)-F\left(x_0\right)\right)-f\left(x_0\right)\right| \leqslant \varepsilon / 2<\varepsilon . \\
+\Rightarrow & \lim _{h \rightarrow 0}\left|\frac{1}{h}\left(F\left(x_0+h\right)-F\left(x_0\right)\right)-f\left(x_0\right)\right|=0 .
+\end{aligned}
+$$
+
+
+
+
+
 
 
 # Chapter 7 Interchange of limit operations
